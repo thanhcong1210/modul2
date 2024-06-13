@@ -1,7 +1,5 @@
 package ss4.BaiTap.XayDungLopStopWatch;
 
-import com.sun.xml.internal.ws.api.model.wsdl.WSDLOutput;
-
 public class StopWatch {
 
     private long startTime;
@@ -30,5 +28,4 @@ public class StopWatch {
     public long getElapsedTime() {
         return endTime - startTime;
     }
-
 }

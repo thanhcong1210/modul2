@@ -1,6 +1,6 @@
-package ss4.BaiTap.XayDungLopFan;
+package ss4.BaiTap.Xay_Dung_Lop_Fan;
 
-public class main {
+public class Main {
     public static void main(String[] args) {
         Fan fan1 = new Fan(3, true, 10, "Yellow");
         Fan fan2 = new Fan(2, false, 5, "Blue");

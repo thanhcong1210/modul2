@@ -1,8 +1,8 @@
-package ss4.BaiTap.XayDungLopQuadraticEquation;
+package ss4.BaiTap.Lop_Quadratic_Equation;
 
 import java.util.Scanner;
 
-public class main {
+public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -11,7 +11,7 @@ public class main {
         double b = 0;
         double c = 0;
 
-        System.out.println("Quadratic equation: ax2 + bx + c = 0");
+        System.out.println("Quadratic equation: ax^2 + bx + c = 0");
         while (true) {
             try {
                 System.out.print("Enter a, b, c");
@@ -29,6 +29,7 @@ public class main {
 
         System.out.println("Caculate quadratic equation: " + qE.getA() + "x2 +" + qE.getB() + "x + " + qE.getC() + "= 0");
 
+        double discriminant = qE.getDiscriminant();
         System.out.println("Delta = " + qE.getDiscriminant());
 
         if (a == 0) {
@@ -38,9 +39,9 @@ public class main {
                 System.out.println("The equation has a solution: " + (-qE.getC() / (qE.getB())));
             }
         }else {
-            if (qE.getDiscriminant() < 0) {
+            if (discriminant < 0) {
                 System.out.println("The equation has no solution");
-            }else if (qE.getDiscriminant() == 0) {
+            }else if (discriminant == 0) {
                 System.out.println("The equation has a double solution: " + qE.getRoot1());
             }else {
                 System.out.println("The equation has two solution: " + qE.getRoot1() + " and " + qE.getRoot2());

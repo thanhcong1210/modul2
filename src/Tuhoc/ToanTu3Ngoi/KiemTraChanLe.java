@@ -1,8 +1,8 @@
-package Tuhoc;
+package Tuhoc.ToanTu3Ngoi;
 
 import java.util.Scanner;
 
-public class ToanTu3Ngoi {
+public class KiemTraChanLe {
     //nhập vào bàn phím 1 số, kiểm tra chẵn lẻ
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);

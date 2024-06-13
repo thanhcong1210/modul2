@@ -33,7 +33,4 @@ public class Main {
             arr[i] = temp;
         }
     }
-
-    private static class Stopwatch {
-    }
 }
