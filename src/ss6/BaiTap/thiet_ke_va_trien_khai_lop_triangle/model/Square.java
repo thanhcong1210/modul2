@@ -5,7 +5,7 @@ public class Square {
     private String color = "green";
     private boolean filled = true;
 
-    public Square(){
+    public Square(int i){
     }
     public Square(String color, boolean filled){
         this.color = color;
