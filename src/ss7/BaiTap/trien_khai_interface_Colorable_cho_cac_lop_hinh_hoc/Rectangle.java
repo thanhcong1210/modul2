@@ -1,19 +1,19 @@
 package ss7.BaiTap.trien_khai_interface_Colorable_cho_cac_lop_hinh_hoc;
 
-public class Ractangle extends Shape{
+public class Rectangle extends Shape{
 
     private double width = 1.0;
     private double length = 1.0;
 
-    public Ractangle() {
+    public Rectangle() {
     }
 
-    public Ractangle(double width, double length) {
+    public Rectangle(double width, double length) {
         this.width = width;
         this.length = length;
     }
 
-    public Ractangle(double width, double length, String color, boolean filled) {
+    public Rectangle(double width, double length, String color, boolean filled) {
         super(color, filled);
         this.width = width;
         this.length = length;

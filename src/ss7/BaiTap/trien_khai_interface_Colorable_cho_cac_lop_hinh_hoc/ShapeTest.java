@@ -5,7 +5,7 @@ public class ShapeTest {
         Shape[] shapes = new Shape[3];
         int length = shapes.length;
         shapes[0] = new Circle(3.5, "indigo", false);
-        shapes[1] = new Ractangle(2, 3);
+        shapes[1] = new Rectangle(2, 3);
         shapes[2] = new Square(5.5, "orange", true);
         for (int i = 0; i < length; i++) {
             System.out.println("=======================================================");
