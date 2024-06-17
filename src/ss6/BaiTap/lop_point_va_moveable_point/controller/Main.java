@@ -13,6 +13,7 @@ public class Main {
         pointService.add();
         pointService.display();
 
+
         // Test class MoveablePoint
         moveablePointService.add();
         moveablePointService.display();
