@@ -62,6 +62,6 @@ public class DaoNguocSoNguyen {
     }
 
     private static boolean isNumeric(String str) {
-        return str.matches("-?\\d+"); // Kiểm tra nếu chuỗi là số nguyên hợp lệ, bao gồm số âm
+        return str.matches("-?\\d+");
     }
 }
