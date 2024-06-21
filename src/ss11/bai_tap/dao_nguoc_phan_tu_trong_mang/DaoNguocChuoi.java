@@ -1,4 +1,4 @@
-package ss11.BaiTap.dao_nguoc_phan_tu_trong_mang;
+package ss11.bai_tap.dao_nguoc_phan_tu_trong_mang;
 
 import java.util.Scanner;
 import java.util.Stack;

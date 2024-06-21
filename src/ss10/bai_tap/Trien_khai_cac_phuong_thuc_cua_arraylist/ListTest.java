@@ -1,4 +1,4 @@
-package ss10.BaiTap.Trien_khai_cac_phuong_thuc_cua_arraylist;
+package ss10.bai_tap.Trien_khai_cac_phuong_thuc_cua_arraylist;
 
 public class ListTest {
     public static void main(String[] args) {

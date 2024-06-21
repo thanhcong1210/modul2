@@ -1,4 +1,4 @@
-package ss10.ThucHanh.trien_khai_lop_List_don_gian;
+package ss10.thuc_hanh.trien_khai_lop_List_don_gian;
 
 public class MyListTest {
     public static void main(String[] args) {

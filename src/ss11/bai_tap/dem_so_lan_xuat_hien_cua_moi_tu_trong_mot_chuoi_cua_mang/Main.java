@@ -1,4 +1,4 @@
-package ss11.BaiTap.dem_so_lan_xuat_hien_cua_moi_tu_trong_mot_chuoi_cua_mang;
+package ss11.bai_tap.dem_so_lan_xuat_hien_cua_moi_tu_trong_mot_chuoi_cua_mang;
 
 import java.util.Map;
 import java.util.Scanner;

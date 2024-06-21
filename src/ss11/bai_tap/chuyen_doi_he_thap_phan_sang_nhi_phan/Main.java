@@ -1,4 +1,4 @@
-package ss11.BaiTap.chuyen_doi_he_thap_phan_sang_nhi_phan;
+package ss11.bai_tap.chuyen_doi_he_thap_phan_sang_nhi_phan;
 
 import java.util.Scanner;
 import java.util.Stack;

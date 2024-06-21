@@ -1,4 +1,4 @@
-package ss10.BaiTap.Trien_khai_cac_phuong_thuc_cua_arraylist;
+package ss10.bai_tap.Trien_khai_cac_phuong_thuc_cua_arraylist;
 
 import java.util.Arrays;
 
