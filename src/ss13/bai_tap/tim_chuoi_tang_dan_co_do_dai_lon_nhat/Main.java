@@ -4,11 +4,6 @@ import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Main {
-
-    /* cho chạy vòng for lồng nhau
-     * vòng lặp ngoài : nếu chuỗi tăng dần thì thêm kí tự vào trong list
-     * vòng lặp trong : kiểm tra chuỗi kí tự này có lớn hơn kí tự cuối hay k nếu có thì thêm vào list
-     * rồi mik so sánh nếu list 1 lớn hơn list 2 thì mik gán vào max */
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);

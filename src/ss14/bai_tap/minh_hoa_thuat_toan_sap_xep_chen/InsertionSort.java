@@ -22,12 +22,5 @@ public class InsertionSort {
         }
         System.out.println();
     }
-    public static void main(String[] args) {
-        int[] arr = {12, 11, 13, 5, 6};
-        System.out.println("Mảng ban đầu: ");
-        printArray(arr);
-        insertSort(arr);
-        System.out.println("Mảng sau khi sắp xếp: ");
-        printArray(arr);
-    }
+
 }
