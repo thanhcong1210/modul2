@@ -21,7 +21,7 @@ public class Main {
 
             word = word.replaceAll("[^a-zA-Z]", "");
 
-            if (!word.isEmpty()) { // Ignore empty words
+            if (!word.isEmpty()) {
 
                 if (wordCountMap.containsKey(word)) {
 
