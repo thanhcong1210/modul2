@@ -1,0 +1,7 @@
+package ss8.ThucHanh.doi_ten_bien_va_tach_hang;
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello World");
+    }
+}
