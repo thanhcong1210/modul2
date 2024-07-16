@@ -1,6 +1,6 @@
-package case_study_2.repo;
+package hello.repo;
 
-import case_study_2.model.User;
+import hello.model.User;
 
 import java.io.*;
 import java.util.ArrayList;

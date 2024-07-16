@@ -1,4 +1,4 @@
-package phuong_tien_giao_thong.model;
+package luyen_tap.phuong_tien_giao_thong.model;
 
 public class MotorBike extends Vehicle {
    private int wattage;

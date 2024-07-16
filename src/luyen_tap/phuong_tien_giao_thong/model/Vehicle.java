@@ -1,4 +1,4 @@
-package phuong_tien_giao_thong.model;
+package luyen_tap.phuong_tien_giao_thong.model;
 
 public abstract class Vehicle {
     protected String licensePlates;

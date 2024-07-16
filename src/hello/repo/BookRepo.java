@@ -1,6 +1,6 @@
-package case_study_2.repo;
+package hello.repo;
 
-import case_study_2.model.Book;
+import hello.model.Book;
 
 import java.io.*;
 import java.util.HashMap;

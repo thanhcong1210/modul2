@@ -1,8 +1,8 @@
-package case_study_2.view;
+package hello.view;
 
-import case_study_2.model.Book;
-import case_study_2.model.BookOnLoan;
-import case_study_2.model.User;
+import hello.model.Book;
+import hello.model.BookOnLoan;
+import hello.model.User;
 
 import java.util.HashMap;
 import java.util.List;

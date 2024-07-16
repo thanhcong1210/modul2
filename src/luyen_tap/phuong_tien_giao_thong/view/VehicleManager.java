@@ -1,17 +1,17 @@
-package phuong_tien_giao_thong.view;
+package luyen_tap.phuong_tien_giao_thong.view;
 
-import phuong_tien_giao_thong.model.Car;
-import phuong_tien_giao_thong.model.MotorBike;
-import phuong_tien_giao_thong.model.Truck;
-import phuong_tien_giao_thong.model.Vehicle;
+import luyen_tap.phuong_tien_giao_thong.model.Car;
+import luyen_tap.phuong_tien_giao_thong.model.MotorBike;
+import luyen_tap.phuong_tien_giao_thong.model.Truck;
+import luyen_tap.phuong_tien_giao_thong.model.Vehicle;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
-import static phuong_tien_giao_thong.view.CompanyManager.getCompany;
-import static phuong_tien_giao_thong.view.ReadAndWrite.*;
+import static luyen_tap.phuong_tien_giao_thong.view.CompanyManager.getCompany;
+import static luyen_tap.phuong_tien_giao_thong.view.ReadAndWrite.*;
 
 public class VehicleManager {
     public static void displayMenu() {

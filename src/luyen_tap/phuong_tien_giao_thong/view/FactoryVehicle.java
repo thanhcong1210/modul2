@@ -1,8 +1,8 @@
-package phuong_tien_giao_thong.view;
+package luyen_tap.phuong_tien_giao_thong.view;
 
-import phuong_tien_giao_thong.model.Car;
-import phuong_tien_giao_thong.model.MotorBike;
-import phuong_tien_giao_thong.model.Truck;
+import luyen_tap.phuong_tien_giao_thong.model.Car;
+import luyen_tap.phuong_tien_giao_thong.model.MotorBike;
+import luyen_tap.phuong_tien_giao_thong.model.Truck;
 
 import java.io.File;
 import java.io.IOException;
@@ -10,13 +10,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-import static phuong_tien_giao_thong.view.ReadAndWrite.*;
-import static phuong_tien_giao_thong.view.VehicleManager.*;
+import static luyen_tap.phuong_tien_giao_thong.view.ReadAndWrite.*;
+import static luyen_tap.phuong_tien_giao_thong.view.VehicleManager.*;
 
 public class FactoryVehicle {
-    public static String linkFileTruck = "src/phuong_tien_giao_thong/data/truck.txt";
-    public static String linkFileCar = "src/phuong_tien_giao_thong/data/car.txt";
-    public static String linkFileMotorBike = "src/phuong_tien_giao_thong/data/motorbike.txt";
+    public static String linkFileTruck = "src/luyen_tap.phuong_tien_giao_thong/data/truck.txt";
+    public static String linkFileCar = "src/luyen_tap.phuong_tien_giao_thong/data/car.txt";
+    public static String linkFileMotorBike = "src/luyen_tap.phuong_tien_giao_thong/data/motorbike.txt";
     public static List<Truck> truckManager = new ArrayList<>();
     public static List<Car> carManager = new ArrayList<>();
     public static List<MotorBike> motorBikeManager = new ArrayList<>();

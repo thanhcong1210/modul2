@@ -1,4 +1,4 @@
-package case_study_2.model;
+package hello.model;
 
 import java.io.Serial;
 import java.io.Serializable;

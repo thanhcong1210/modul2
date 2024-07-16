@@ -1,12 +1,12 @@
-package phuong_tien_giao_thong.controller;
+package luyen_tap.phuong_tien_giao_thong.controller;
 
 import java.io.IOException;
 import java.util.Scanner;
 
-import static phuong_tien_giao_thong.view.FactoryVehicle.*;
-import static phuong_tien_giao_thong.view.IView.*;
-import static phuong_tien_giao_thong.view.ReadAndWrite.*;
-import static phuong_tien_giao_thong.view.VehicleManager.displayMenu;
+import static luyen_tap.phuong_tien_giao_thong.view.FactoryVehicle.*;
+import static luyen_tap.phuong_tien_giao_thong.view.IView.*;
+import static luyen_tap.phuong_tien_giao_thong.view.ReadAndWrite.*;
+import static luyen_tap.phuong_tien_giao_thong.view.VehicleManager.displayMenu;
 
 public class Main {
 

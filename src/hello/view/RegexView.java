@@ -1,4 +1,4 @@
-package case_study_2.view;
+package hello.view;
 
 public class RegexView {
     private static final String USER_NAME_REGEX = "^[a-zA-Z0-9]{6,16}$";

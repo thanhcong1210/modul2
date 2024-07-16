@@ -1,8 +1,8 @@
-package phuong_tien_giao_thong.view;
+package luyen_tap.phuong_tien_giao_thong.view;
 
-import phuong_tien_giao_thong.model.Car;
-import phuong_tien_giao_thong.model.MotorBike;
-import phuong_tien_giao_thong.model.Truck;
+import luyen_tap.phuong_tien_giao_thong.model.Car;
+import luyen_tap.phuong_tien_giao_thong.model.MotorBike;
+import luyen_tap.phuong_tien_giao_thong.model.Truck;
 
 import java.io.*;
 import java.util.List;

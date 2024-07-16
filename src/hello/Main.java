@@ -1,6 +1,6 @@
-package case_study_2;
+package hello;
 
-import case_study_2.controller.Library;
+import hello.controller.Library;
 
 public class Main {
     public static void main(String[] args) {

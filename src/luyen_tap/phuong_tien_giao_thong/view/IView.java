@@ -1,4 +1,4 @@
-package phuong_tien_giao_thong.view;
+package luyen_tap.phuong_tien_giao_thong.view;
 
 public interface IView {
     int ADD_VEHICLE = 1;

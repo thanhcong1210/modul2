@@ -1,4 +1,4 @@
-package case_study_2.view;
+package hello.view;
 
 import java.util.Scanner;
 

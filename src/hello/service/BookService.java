@@ -1,8 +1,8 @@
-package case_study_2.service;
+package hello.service;
 
-import case_study_2.model.Book;
-import case_study_2.repo.BookRepo;
-import case_study_2.view.LibraryView;
+import hello.model.Book;
+import hello.repo.BookRepo;
+import hello.view.LibraryView;
 
 import java.util.HashMap;
 

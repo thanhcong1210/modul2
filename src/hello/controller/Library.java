@@ -1,13 +1,13 @@
-package case_study_2.controller;
+package hello.controller;
 
-import case_study_2.model.Book;
-import case_study_2.model.BookOnLoan;
-import case_study_2.model.User;
-import case_study_2.service.BookOnLoanService;
-import case_study_2.service.BookService;
-import case_study_2.service.Service;
-import case_study_2.service.UserService;
-import case_study_2.view.LibraryView;
+import hello.model.Book;
+import hello.model.BookOnLoan;
+import hello.model.User;
+import hello.service.BookOnLoanService;
+import hello.service.BookService;
+import hello.service.Service;
+import hello.service.UserService;
+import hello.view.LibraryView;
 
 import java.util.HashMap;
 import java.util.List;

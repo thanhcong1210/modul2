@@ -1,19 +1,23 @@
 package ss2.BaiTap;
 
-import java.awt.*;
 import java.util.Scanner;
 
 public class HienThiCacLoaiHinh {
     public static void main(String[] args) {
+        /*
+        biến choice được sử dụng để lưu lựa chọn của người dùng vào menu
+        sử dụng do-while để hiển thị menu và xử lý lựa chọn của người dùng cho đến khi người dùng chọn 4.thoát
+        sử dụng switch-case để gọi các phương thức dựa trên lựa chọn của người dùng
+         */
         Scanner scanner = new Scanner(System.in);
         int choice;
         do {
             System.out.println("Menu");
-            System.out.println("1. Print the rectangle");
-            System.out.println("2. Print the square triangle");
-            System.out.println("3. Print isosceles tringle");
-            System.out.println("4. Exit");
-            System.out.println("Enter your choice: ");
+            System.out.println("1. In hình chữ nhật");
+            System.out.println("2. In tam giác vuông");
+            System.out.println("3. In tam giác cân");
+            System.out.println("4. THOÁT");
+            System.out.println("Nhập lựa chọn của bạn: ");
             choice = scanner.nextInt();
 
             switch (choice) {
@@ -21,16 +25,16 @@ public class HienThiCacLoaiHinh {
                     printRectangle();
                     break;
                 case 2:
-                    printSquareTriangle();
+                    printSquareTringle();
                     break;
                 case 3:
-                    printIsoscelesTringle();
+                    printIsoscelesTriangle();
                     break;
                 case 4:
-                    System.out.println("Exit");
+                    System.out.println("THOÁT");
                     break;
                 default:
-                    System.out.println("Invalid choice");
+                    System.out.println("lựa chọn không hợp lệ!!!");
             }
         } while (choice != 4);
     }
@@ -40,9 +44,9 @@ public class HienThiCacLoaiHinh {
 
     public static void printRectangle() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter the width of the rectangle: ");
+        System.out.print("Nhập chiều rộng của hình chữ nhật: ");
         int width = scanner.nextInt();
-        System.out.print("Enter the height of the rectangle: ");
+        System.out.print("Nhập chiều cao của hình chữ nhật: ");
         int height = scanner.nextInt();
 
         for (int i = 0; i < height; i++) {
@@ -52,9 +56,10 @@ public class HienThiCacLoaiHinh {
             System.out.println();
         }
     }
-    public static void printSquareTriangle() {
+
+    public static void printSquareTringle() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter the size of the square triangle: ");
+        System.out.print("Nhập kích thước của tam giác vuông: ");
         int size = scanner.nextInt();
 
         for (int i = 0; i < size; i++) {
@@ -67,7 +72,7 @@ public class HienThiCacLoaiHinh {
 
     public static void printIsoscelesTriangle() {
         Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter the height of the isosceles triangle: ");
+        System.out.print("Nhập chiều cao của tam giác cân: ");
         int height = scanner.nextInt();
 
         for (int i = 0; i < height; i++) {

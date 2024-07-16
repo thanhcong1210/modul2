@@ -1,7 +1,7 @@
-package case_study_2.service;
+package hello.service;
 
-import case_study_2.model.User;
-import case_study_2.repo.UserRepo;
+import hello.model.User;
+import hello.repo.UserRepo;
 
 import java.util.List;
 
