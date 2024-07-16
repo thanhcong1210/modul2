@@ -6,51 +6,51 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class UsersRepo {
+public class UserRepo {
 
-    private static UsersRepo usersRepo;
+    private static UserRepo userRepo;
 
-    private UsersRepo() {
+    private UserRepo() {
     }
 
-    public static synchronized UsersRepo getUsersRepo() {
-        if (usersRepo == null) {
-            usersRepo = new UsersRepo();
+    public static synchronized UserRepo getUserRepo() {
+        if (userRepo == null) {
+            userRepo = new UserRepo();
         }
-        return usersRepo;
+        return userRepo;
     }
 
     public boolean add(User user) {
-        if (!usersRepo.checkUsername(user.getUsername())) {
+        if (!userRepo.checkUsername(user.getUsername())) {
             List<User> users = getAll();
             users.add(user);
             writeFile(users);
             return true;
         }
-        System.out.println("\nTên đăng nhập đã tồn tại!");
+        System.out.println("\nTên đăng nhập đã tồn tại");
         return false;
     }
 
     private void writeFile(List<User> users) {
-        try (FileOutputStream fos = new FileOutputStream("src/case_study_2/data/users.dat");
+        try (FileOutputStream fos = new FileOutputStream("src/case_study_2/data/user.csv");
              ObjectOutputStream oos = new ObjectOutputStream(fos)
         ) {
             oos.writeObject(users);
         } catch (IOException e) {
-            System.err.println("Lỗi ghi file!!!");
+            System.err.println("Lỗi ghi file");
         }
     }
 
     @SuppressWarnings("unchecked")
     public List<User> getAll() {
         List<User> users = new ArrayList<>();
-        try (FileInputStream fis = new FileInputStream("src/case_study_2/data/users.dat");
+        try (FileInputStream fis = new FileInputStream("src/case_study_2/data/user.csv");
              ObjectInputStream ois = new ObjectInputStream(fis)
         ) {
             users = (List<User>) ois.readObject();
         } catch (EOFException ignored) {
         } catch (ClassNotFoundException | IOException e) {
-            System.err.println("Lỗi đọc file!!!");
+            System.err.println("Lỗi đọc file");
         }
         return users;
     }

@@ -1,4 +1,4 @@
-package case_study_2.services;
+package case_study_2.service;
 
 import case_study_2.model.User;
 
@@ -18,7 +18,7 @@ public class Service {
     }
 
     public boolean checkLoginAdmin(String[] admin) {
-        return admin[0].equals("ADMIN") && admin[1].equals("666666");
+        return admin[0].equals("ADMIN") && admin[1].equals("123456");
     }
 
     public boolean checkLoginUser(List<User> users, String[] accountLogin) {

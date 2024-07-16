@@ -1,7 +1,5 @@
-package case_study_2.views;
+package case_study_2.view;
 
-import case_study_2.Handler.ExceptionHandler;
-import case_study_2.Handler.RegexHandler;
 import case_study_2.model.Book;
 import case_study_2.model.BookOnLoan;
 import case_study_2.model.User;
@@ -25,21 +23,17 @@ public class LibraryView {
         return view;
     }
 
-    public static final String ANSI_RESET = "\u001B[0m";
-    public static final String ANSI_GREEN = "\u001B[32m";
-    public static final String ANSI_BLUE = "\u001B[34m";
-
     public int mainStatusView() {
-        System.out.println("\n=================WELCOME-TO-LIBRARY=================\n");
+        System.out.println("\n=================XIN-CHÀO-ĐẾN-VỚI-THƯ-VIỆN=================\n");
         System.out.println("Bạn là: ");
         System.out.println("1.\tQUẢN TRỊ VIÊN");
         System.out.println("2.\tNGƯỜI DÙNG");
         System.out.println("0.\tTHOÁT");
         int choice;
         do {
-            choice = ExceptionHandler.checkChoice();
+            choice = ExceptionView.checkChoice();
             if (choice < 0 || choice > 2) {
-                System.err.println("Lựa chọn không khả dụng!!!\n");
+                System.err.println("Lựa chọn không khả dụng\n");
             } else {
                 return choice;
             }
@@ -54,9 +48,9 @@ public class LibraryView {
         System.out.println("4.\tDANH SÁCH THÀNH VIÊN        0.\tĐĂNG XUẤT");
         int choice;
         do {
-            choice = ExceptionHandler.checkChoice();
+            choice = ExceptionView.checkChoice();
             if (choice < 0 || choice > 7) {
-                System.err.println("Lựa chọn không khả dụng!!!\n");
+                System.err.println("Lựa chọn không khả dụng\n");
             } else {
                 return choice;
             }
@@ -73,15 +67,15 @@ public class LibraryView {
         System.out.println("0.\tĐĂNG XUẤT");
         int choice;
         do {
-            choice = ExceptionHandler.checkChoice();
+            choice = ExceptionView.checkChoice();
             if (choice < 0 || choice > 5) {
-                System.err.println("Lựa chọn không khả dụng!!!\n");
+                System.err.println("Lựa chọn không khả dụng\n");
             } else {
                 return choice;
             }
         } while (true);
     }
-    // hiển thị menu cho cả người dùng và quản trị viên chọn
+
     public int userLoginView() {
         System.out.println("\n======================TÙY-CHỌN======================\n");
         System.out.println("1.\tĐĂNG NHẬP");
@@ -89,9 +83,9 @@ public class LibraryView {
         System.out.println("0.\tTRỞ LẠI");
         int choice;
         do {
-            choice = ExceptionHandler.checkChoice();
+            choice = ExceptionView.checkChoice();
             if (choice < 0 || choice > 2) {
-                System.err.println("Lựa chọn không khả dụng!!!\n");
+                System.err.println("Lựa chọn không khả dụng\n");
             } else {
                 return choice;
             }
@@ -99,7 +93,7 @@ public class LibraryView {
     }
 
     public String[] loginView() {
-        System.out.println("\n---------------------ĐĂNG-NHẬP----------------------\n");
+        System.out.println("\n===============ĐĂNG-NHẬP===============\n");
         System.out.print("Tên tài khoản: ");
         String username = sc.nextLine().toUpperCase();
         System.out.print("Mật khẩu: ");
@@ -109,79 +103,78 @@ public class LibraryView {
 
     public User registerView() {
         do {
-            System.out.println("\n-----------------------ĐĂNG-KÝ-----------------------\n");
+            System.out.println("\n===============ĐĂNG-KÝ===============\n");
             System.out.print("Tên đang nhập: ");
             String username = sc.nextLine().toUpperCase();
-            if (!RegexHandler.isValidUsername(username)) {
-                System.err.println("Tên đăng nhập phải là chữ cái hoặc số! (từ 6-16 ký tự!!!)\n");
+            if (!RegexView.isValidUsername(username)) {
+                System.err.println("Tên đăng nhập phải là chữ cái hoặc số! (từ 6-16 ký tự)\n");
                 continue;
             }
             System.out.print("Mật khẩu: ");
             String password = sc.nextLine();
-            if (!RegexHandler.isValidPassword(password)) {
-                System.err.println("Mật khẩu phải là chữ cái và số hoặc ký tự '@'! (từ 6-16 ký tự!!!)\n");
+            if (!RegexView.isValidPassword(password)) {
+                System.err.println("Mật khẩu phải là chữ cái và số hoặc ký tự '@'! (từ 6-16 ký tự)\n");
                 continue;
             }
             System.out.print("Nhập lại mật khẩu: ");
             String confirmPassword = sc.nextLine();
             if (!confirmPassword.equals(password)){
-                System.err.println("Mật khẩu không khớp!!!");
+                System.err.println("Mật khẩu không khớp");
                 continue;
             }
             System.out.print("Họ và tên: ");
             String name = sc.nextLine().toUpperCase();
-            if(!RegexHandler.isValidName(name)){
-                System.err.println("Tên phải là các chữ cái!!!\n");
+            if(!RegexView.isValidName(name)){
+                System.err.println("Tên phải là các chữ cái\n");
                 continue;
             }
             System.out.print("Số điện thoại: ");
             String phoneNumber = sc.nextLine();
-            if(!RegexHandler.isValidPhoneNumber(phoneNumber)){
-                System.err.println("Số điện thoại không hợp lệ!!!\n");
+            if(!RegexView.isValidPhoneNumber(phoneNumber)){
+                System.err.println("Số điện thoại không hợp lệ\n");
                 continue;
             }
             return new User(username, password, name, phoneNumber);
-
         } while (true);
     }
 
     public void viewLoginMessage(boolean result) {
         if (result) {
-            System.out.println(ANSI_GREEN + "\nĐăng nhập thành công!\n" + ANSI_RESET);
+            System.out.println("\nĐăng nhập thành công\n" );
         } else {
-            System.err.println("\nĐăng nhập thất bại!!!\n");
+            System.err.println("\nĐăng nhập thất bại\n");
         }
     }
 
     public void viewRegisterMessage(boolean result) {
         if (result) {
-            System.out.println(ANSI_BLUE + "\nĐăng ký thành công!\n" + ANSI_RESET);
+            System.out.println( "\nĐăng ký thành công\n" );
         } else {
-            System.err.println("\nĐăng ký thất bại!!!\n");
+            System.err.println("\nĐăng ký thất bại\n");
         }
     }
 
     public void viewMessage(boolean result) {
         if (result) {
-            System.out.println(ANSI_BLUE + "\nThao tác thành công!\n" + ANSI_RESET);
+            System.out.println( "\nThao tác thành công\n" );
         } else {
-            System.err.println("\nThao tác thất bại!!!\n");
+            System.err.println("\nThao tác thất bại\n");
         }
     }
 
     public Book viewAddBook() {
         do {
-            System.out.println("\n------------------------THÊM-SÁCH------------------------\n");
+            System.out.println("\n===============THÊM-SÁCH===============\n");
             System.out.print("Tên sách: ");
             String name = sc.nextLine().toUpperCase();
-            if (!RegexHandler.isNotValidString(name)) {
-                System.err.println("Tên không hợp lệ!!!");
+            if (!RegexView.isNotValidString(name)) {
+                System.err.println("Tên không hợp lệ");
                 continue;
             }
             System.out.print("Tác giả: ");
             String author = sc.nextLine().toUpperCase();
-            if (!RegexHandler.isNotValidString(author)) {
-                System.err.println("Tên không hợp lệ!!!");
+            if (!RegexView.isNotValidString(author)) {
+                System.err.println("Tên không hợp lệ");
                 continue;
             }
             return new Book(name, author);
@@ -189,7 +182,7 @@ public class LibraryView {
     }
 
     public Book viewRemoveBook() {
-        System.out.println("\n------------------------XÓA-SÁCH------------------------\n");
+        System.out.println("\n===============XÓA-SÁCH===============\n");
         System.out.print("Tên sách: ");
         String name = sc.nextLine().toUpperCase();
         System.out.print("Tác giả: ");
@@ -198,21 +191,19 @@ public class LibraryView {
     }
 
     public String viewRemoveUser() {
-        System.out.println("\n---------------------XÓA-THÀNH-VIÊN---------------------\n");
+        System.out.println("\n===============XÓA-THÀNH-VIÊN===============\n");
         System.out.print("Nhập tên tài khoản cần xóa: ");
         return sc.nextLine().toUpperCase();
     }
 
     public int viewQuantityBook() {
-        return ExceptionHandler.checkQuantity();
+        return ExceptionView.checkQuantity();
     }
 
     public void viewListUser(List<User> users) {
         String leftAlignFormat = "| %-15s | %-25s | %-15s |%n";
-        System.out.println("---------------------DANH-SÁCH-THÀNH-VIÊN-----------------------\n");
-        System.out.format("+-----------------+---------------------------+-----------------+%n");
-        System.out.format("| Tên Đăng Nhập   | Họ Tên                    | Số Điện Thoại   |%n");
-        System.out.format("+-----------------+---------------------------+-----------------+%n");
+        System.out.println("===============DANH-SÁCH-THÀNH-VIÊN===============\n");
+        System.out.format("| Tên Đăng Nhập           | Họ Tên              | Số Điện Thoại          |%n");
 
         for (User user : users) {
             System.out.format(leftAlignFormat, user.getUsername(), user.getName(), user.getPhoneNumber());
@@ -223,10 +214,8 @@ public class LibraryView {
 
     public void viewListBook(HashMap<Book, Integer> bookMap) {
         String leftAlignFormat = "| %-40s | %-25s | %-10s |%n";
-        System.out.println("------------------------------------SÁCH-HIỆN-TẠI-----------------------------------\n");
-        System.out.format("+------------------------------------------+---------------------------+------------+%n");
-        System.out.format("| Tên Sách                                 | Tác Giả                   | Số Lượng   |%n");
-        System.out.format("+------------------------------------------+---------------------------+------------+%n");
+        System.out.println("==============================SÁCH-HIỆN-TẠI==============================\n");
+        System.out.format("| Tên Sách               | Tác Giả              | Số Lượng               |%n");
 
         for (Book key: bookMap.keySet()) {
             Integer value = bookMap.get(key);
@@ -243,9 +232,9 @@ public class LibraryView {
         System.out.println("0.\tTRỞ LẠI");
         int choice;
         do {
-            choice = ExceptionHandler.checkChoice();
+            choice = ExceptionView.checkChoice();
             if (choice < 0 || choice > 2) {
-                System.err.println("Lựa chọn không khả dụng!!!\n");
+                System.err.println("Lựa chọn không đúng!!!\n");
             } else {
                 return choice;
             }
@@ -282,23 +271,21 @@ public class LibraryView {
     }
 
     public String viewBorrowBook() {
-        System.out.println("\n------------------------MƯỢN-SÁCH------------------------\n");
+        System.out.println("\n===============MƯỢN-SÁCH===============\n");
         System.out.print("Nhập tên sách cần mượn: ");
         return sc.nextLine().toUpperCase();
     }
 
     public String viewReturnBook() {
-        System.out.println("\n------------------------TRẢ-SÁCH-------------------------\n");
+        System.out.println("\n===============TRẢ-SÁCH===============\n");
         System.out.print("Nhập tên sách cần trả: ");
         return sc.nextLine().toUpperCase();
     }
 
     public void viewListBookOnLoan(HashMap<BookOnLoan, Integer> bookMap) {
         String leftAlignFormat = "| %-20s | %-35s | %-20s | %-10s |%n";
-        System.out.println("----------------------------------------SÁCH-ĐANG-CHO-MƯỢN---------------------------------------\n");
-        System.out.format("+----------------------+-------------------------------------+----------------------+------------+%n");
-        System.out.format("| Tài Khoản            | Tên Sách                            | Tác Giả              |Số Lượng    |%n");
-        System.out.format("+----------------------+-------------------------------------+----------------------+------------+%n");
+        System.out.println("==============================SÁCH-ĐANG-CHO-MƯỢN==============================\n");
+        System.out.format("| Tài Khoản               | Tên Sách                    | Tác Giả              |Số Lượng           |%n");
 
         for (BookOnLoan key: bookMap.keySet()) {
             Integer value = bookMap.get(key);

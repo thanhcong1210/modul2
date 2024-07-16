@@ -6,18 +6,18 @@ import java.io.*;
 import java.util.HashMap;
 
 
-public class BooksRepo {
-    private static BooksRepo booksRepo;
-    private final String SRC_FILE_BOOK = "src/case_study_2/data/books.dat";
+public class BookRepo {
+    private static BookRepo bookRepo;
+    private final String SRC_FILE_BOOK = "src/case_study_2/data/book.csv";
 
-    private BooksRepo() {
+    private BookRepo() {
     }
 
-    public static synchronized BooksRepo getBooksRepo() {
-        if (booksRepo == null) {
-            booksRepo = new BooksRepo();
+    public static synchronized BookRepo getBookRepo() {
+        if (bookRepo == null) {
+            bookRepo = new BookRepo();
         }
-        return booksRepo;
+        return bookRepo;
     }
 
     public void add(Book book, int quantity) {

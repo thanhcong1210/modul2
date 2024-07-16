@@ -1,4 +1,4 @@
-package case_study_2.repositories;
+package case_study_2.repo;
 
 import case_study_2.model.BookOnLoan;
 
@@ -7,7 +7,7 @@ import java.util.HashMap;
 
 public class BookOnLoanRepo {
     private static BookOnLoanRepo bookOnLoanRepo;
-    private final String SRC_FILE_BOOK_ON_LOAN = "src/case_study_2/data/bookOnLoan.dat";
+    private final String SRC_FILE_BOOK_ON_LOAN = "src/case_study_2/data/bookOnLoan.csv";
 
     private BookOnLoanRepo() {
     }
@@ -50,7 +50,7 @@ public class BookOnLoanRepo {
             bookOnLoanMap = (HashMap<BookOnLoan, Integer>) ois.readObject();
         } catch (EOFException ignored) {
         } catch (IOException | ClassNotFoundException e) {
-            System.err.println("Lỗi đọc file!!!");
+            System.err.println("Lỗi đọc file");
         }
         return bookOnLoanMap;
     }

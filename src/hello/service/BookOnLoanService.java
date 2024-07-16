@@ -1,22 +1,22 @@
-package case_study_2.services;
+package case_study_2.service;
 
 import case_study_2.model.BookOnLoan;
-import case_study_2.repositories.BookOnLoanRepo;
-import case_study_2.views.LibraryView;
+import case_study_2.repo.BookOnLoanRepo;
+import case_study_2.view.LibraryView;
 
 import java.util.HashMap;
 
 public class BookOnLoanService {
-    private static BookOnLoanService bookOnLoanService;
+    private static BookOnLoanService bookOnLoan;
 
     private BookOnLoanService() {
     }
 
     public static synchronized BookOnLoanService getBookOnLoanService() {
-        if (bookOnLoanService == null) {
-            bookOnLoanService = new BookOnLoanService();
+        if (bookOnLoan == null) {
+            bookOnLoan = new BookOnLoanService();
         }
-        return bookOnLoanService;
+        return bookOnLoan;
     }
 
     private final LibraryView view = LibraryView.getLibraryView();

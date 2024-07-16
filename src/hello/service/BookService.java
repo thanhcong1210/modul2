@@ -1,54 +1,54 @@
-package case_study_2.services;
+package case_study_2.service;
 
 import case_study_2.model.Book;
-import case_study_2.repositories.BooksRepo;
-import case_study_2.views.LibraryView;
+import case_study_2.repo.BookRepo;
+import case_study_2.view.LibraryView;
 
 import java.util.HashMap;
 
 public class BookService {
-    private final BooksRepo booksRepo = BooksRepo.getBooksRepo();
+    private final BookRepo bookRepo = BookRepo.getBookRepo();
     private final LibraryView view = LibraryView.getLibraryView();
 
-    private static BookService bookService;
+    private static BookService book;
 
     private BookService() {
     }
 
     public static synchronized BookService getBookService() {
-        if (bookService == null) {
-            bookService = new BookService();
+        if (book == null) {
+            book= new BookService();
         }
-        return bookService;
+        return book;
     }
 
     public void add(Book book, Integer quantity) {
-        booksRepo.add(book, quantity);
+        bookRepo.add(book, quantity);
     }
 
     public HashMap<Book, Integer> getAll() {
-        return booksRepo.getAll();
+        return bookRepo.getAll();
     }
 
     public boolean remove(Book book, Integer quantity) {
-        return booksRepo.remove(book, quantity);
+        return bookRepo.remove(book, quantity);
     }
 
     public void findByName(String name) {
-        HashMap<Book, Integer> books = booksRepo.findByName(name);
+        HashMap<Book, Integer> books = bookRepo.findByName(name);
         if (!books.isEmpty()) {
             view.viewListBook(books);
         } else {
-            System.err.println("Không tìm thấy sách cần tìm!\n");
+            System.err.println("Không tìm thấy sách cần tìm\n");
         }
     }
 
     public void findByAuthor(String author) {
-        HashMap<Book, Integer> books = booksRepo.findByAuthor(author);
+        HashMap<Book, Integer> books = bookRepo.findByAuthor(author);
         if (!books.isEmpty()) {
             view.viewListBook(books);
         } else {
-            System.err.println("Không tìm thấy sách cần tìm!\n");
+            System.err.println("Không tìm thấy sách cần tìm\n");
         }
     }
 

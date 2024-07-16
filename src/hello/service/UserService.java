@@ -1,7 +1,7 @@
-package case_study_2.services;
+package case_study_2.service;
 
 import case_study_2.model.User;
-import case_study_2.repositories.UsersRepo;
+import case_study_2.repo.UserRepo;
 
 import java.util.List;
 
@@ -19,7 +19,7 @@ public class UserService{
     }
 
     public boolean checkUsername(String username) {
-        List<User> users = usersRepo.getAll();
+        List<User> users = userRepo.getAll();
         for (User user : users) {
             if (user.getUsername().equals(username)) {
                 return true;
@@ -28,19 +28,19 @@ public class UserService{
         return false;
     }
 
-    private final UsersRepo usersRepo = UsersRepo.getUsersRepo();
+    private final UserRepo userRepo = UserRepo.getUserRepo();
 
 
     public boolean add(User user) {
-        return usersRepo.add(user);
+        return userRepo.add(user);
     }
 
 
     public List<User> getAll() {
-        return usersRepo.getAll();
+        return userRepo.getAll();
     }
 
     public boolean remove(String username) {
-        return usersRepo.remove(username);
+        return userRepo.remove(username);
     }
 }

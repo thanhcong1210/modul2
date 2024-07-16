@@ -12,7 +12,7 @@ import case_study_2.view.LibraryView;
 import java.util.HashMap;
 import java.util.List;
 
-public class LibraryController {
+public class Library {
     private final UserService userService = UserService.getUserService();
     private final BookService bookService = BookService.getBookService();
     private final BookOnLoanService bookOnLoanService = BookOnLoanService.getBookOnLoanService();
@@ -20,16 +20,16 @@ public class LibraryController {
     private final Service service = Service.getService();
 
 
-    private static LibraryController libraryController;
+    private static Library library;
 
-    private LibraryController() {
+    private Library() {
     }
 
-    public static synchronized LibraryController getLibraryController() {
-        if (libraryController == null) {
-            libraryController = new LibraryController();
+    public static synchronized Library getLibrary() {
+        if (library == null) {
+            library = new Library();
         }
-        return libraryController;
+        return library;
     }
 
     String[] data;
@@ -39,7 +39,6 @@ public class LibraryController {
         while (true) {
             int choice = view.mainStatusView();
             switch (choice) {
-                //thành công
                 case 1:
                     data = view.loginView();
                     result = service.checkLoginAdmin(data);
@@ -50,7 +49,6 @@ public class LibraryController {
                         view.viewLoginMessage(false);
                     }
                     break;
-                    //đăng nhập đăng ký
                 case 2:
                     handleUserLogin();
                     break;
@@ -116,10 +114,7 @@ public class LibraryController {
             }
         }
     }
-    /*
-    để người dùng có thể chọn một trong những cái ở trong menu
-    như mượn sách, trả sách, tìm kiếm sách, hiển thị sách
-     */
+
     private void handleUser() {
         Book book;
         BookOnLoan bookOnLoan;
@@ -170,11 +165,7 @@ public class LibraryController {
             }
         }
     }
-    /*
-    tìm kiếm sách, hiển thị trang tìm kiếm sách
-    và để người dùng chọn 1 trong các tùy chọn
-    tìm kiếm theo tên hoặc tác giả
-    */
+
     private void handleFindBook() {
         String str;
         while (true) {
@@ -193,15 +184,13 @@ public class LibraryController {
             }
         }
     }
-    //xử lý quá trình đăng nhập đăng ký
     private void handleUserLogin() {
         boolean result;
         User user;
         List<User> users;
         while (true) {
-            int choice = view.userLoginView();  //hiển thị giao diện đăng nhập cho người dùng
+            int choice = view.userLoginView();
             switch (choice) {
-                //nếu đăng nhập thành công thì nó sẽ chạy tới handleUser
                 case 1:
                     data = view.loginView();
                     users = userService.getAll();
@@ -213,7 +202,6 @@ public class LibraryController {
                         view.viewLoginMessage(false);
                     }
                     break;
-                    //để người dùng đăng kí tài khoản mới
                 case 2:
                     user = view.registerView();
                     result = userService.add(user);
@@ -224,5 +212,4 @@ public class LibraryController {
             }
         }
     }
-
 }
