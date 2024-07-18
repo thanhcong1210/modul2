@@ -6,11 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TraiCayRepository {
-    private List<TraiCay> danhSachTraiCay;
-
-    public TraiCayRepository() {
-        danhSachTraiCay = new ArrayList<>();
-    }
+    private List<TraiCay> danhSachTraiCay = new ArrayList<>();
 
     public List<TraiCay> findAll() {
         return new ArrayList<>(danhSachTraiCay);
