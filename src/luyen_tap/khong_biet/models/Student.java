@@ -16,7 +16,7 @@ public class Student extends Person{
     }
 
     public static void setLastedStudentCode(int lastedStudentCode) {
-        Student.lastedStudentCode = lastedStudentCode;
+        luyen_tap.khong_biet.models.Student.lastedStudentCode = lastedStudentCode;
     }
 
     public int getStudentCode() {
