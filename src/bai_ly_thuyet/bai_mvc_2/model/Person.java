@@ -1,18 +1,28 @@
-package bai_ly_thuyet;
+package bai_ly_thuyet.bai_mvc_2.model;
 
 import java.time.LocalDate;
 
-public class Person {
+abstract class Person {
+    private String id;
     private String name;
-    private LocalDate birthday;
+    private LocalDate birthDate;
     private String email;
     private String phoneNumber;
 
-    public Person(String name, LocalDate birthday, String email, String phoneNumber) {
+    public Person(String id, String name, LocalDate birthDate, String email, String phoneNumber) {
+        this.id = id;
         this.name = name;
-        this.birthday = birthday;
+        this.birthDate = birthDate;
         this.email = email;
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -23,12 +33,12 @@ public class Person {
         this.name = name;
     }
 
-    public LocalDate getBirthday() {
-        return birthday;
+    public LocalDate getBirthDate() {
+        return birthDate;
     }
 
-    public void setBirthday(LocalDate birthday) {
-        this.birthday = birthday;
+    public void setBirthDate(LocalDate birthDate) {
+        this.birthDate = birthDate;
     }
 
     public String getEmail() {
@@ -47,11 +57,14 @@ public class Person {
         this.phoneNumber = phoneNumber;
     }
 
+    public abstract void say();
+
     @Override
     public String toString() {
-        return
+        return "{" +
+                "id='" + id + '\'' +
                 ", name='" + name + '\'' +
-                ", birthday=" + birthday +
+                ", birthDate=" + birthDate +
                 ", email='" + email + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 '}';

@@ -1,12 +1,14 @@
-package bai_ly_thuyet.bai_mvc.model;
+package bai_ly_thuyet.bai_mvc_2.model;
 
 import java.time.LocalDate;
 
-public class Student extends Person {
+public class Student extends Person{
     private String className;
 
-    public Student(String name, LocalDate birthDate, String email, String phoneNumber, String className) {
-        super(name, birthDate, email, phoneNumber);
+    
+
+    public Student(String id, String name, LocalDate birthDate, String email, String phoneNumber, String className) {
+        super(id, name, birthDate, email, phoneNumber);
         this.className = className;
     }
 
@@ -16,10 +18,6 @@ public class Student extends Person {
 
     public void setClassName(String className) {
         this.className = className;
-    }
-
-    public void learn(String subject) {
-        System.out.println("Học môn " + subject);
     }
 
     @Override

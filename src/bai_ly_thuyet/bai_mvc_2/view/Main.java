@@ -1,11 +1,11 @@
-package bai_ly_thuyet.bai_mvc.view;
+package bai_ly_thuyet.bai_mvc_2.view;
 
-import bai_ly_thuyet.bai_mvc.controller.StudentController;
-import bai_ly_thuyet.bai_mvc.controller.TeacherController;
+import bai_ly_thuyet.bai_mvc_2.controller.StudentController;
+import bai_ly_thuyet.bai_mvc_2.controller.TeacherController;
 
 import java.util.Scanner;
 
-public class CodeGymManagement {
+public class Main {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         StudentController studentController = new StudentController();

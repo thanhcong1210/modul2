@@ -1,13 +1,14 @@
 package bai_tap_bo_sung.quan_ly_trai_cay.controller;
 
 import bai_tap_bo_sung.quan_ly_trai_cay.model.TraiCay;
+import bai_tap_bo_sung.quan_ly_trai_cay.service.ITraiCayService;
 import bai_tap_bo_sung.quan_ly_trai_cay.service.TraiCayService;
 import bai_tap_bo_sung.quan_ly_trai_cay.view.TraiCayView;
 
 import java.util.List;
 
 public class TraiCayController {
-    private TraiCayService traiCayService  = new TraiCayService();
+    private ITraiCayService traiCayService  = new TraiCayService();
     private TraiCayView traiCayView = new TraiCayView();
 
     public void chayChuongTrinh() {

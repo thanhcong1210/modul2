@@ -5,15 +5,17 @@ import bai_tap_bo_sung.quan_ly_trai_cay.model.TraiCay;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TraiCayRepository {
+public class TraiCayRepository implements ITraiCayRepository{
     private List<TraiCay> danhSachTraiCay = new ArrayList<>();
 
-    public List<TraiCay> findAll() {
-        return new ArrayList<>(danhSachTraiCay);
+
+    @Override
+    public List<TraiCay> getAllTraiCay() {
+        return danhSachTraiCay;
     }
 
-    public void save(TraiCay traiCay) {
-        danhSachTraiCay.add(traiCay);
+    @Override
+    public void addTraiCay(TraiCay traiCayMoi) {
+        danhSachTraiCay.add(traiCayMoi);
     }
-
 }
