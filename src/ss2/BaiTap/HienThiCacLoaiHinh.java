@@ -4,11 +4,7 @@ import java.util.Scanner;
 
 public class HienThiCacLoaiHinh {
     public static void main(String[] args) {
-        /*
-        biến choice được sử dụng để lưu lựa chọn của người dùng vào menu
-        sử dụng do-while để hiển thị menu và xử lý lựa chọn của người dùng cho đến khi người dùng chọn 4.thoát
-        sử dụng switch-case để gọi các phương thức dựa trên lựa chọn của người dùng
-         */
+        
         Scanner scanner = new Scanner(System.in);
         int choice;
         do {
