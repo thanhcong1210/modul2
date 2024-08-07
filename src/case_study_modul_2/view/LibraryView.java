@@ -169,13 +169,13 @@ public class LibraryView {
             System.out.println(">>      THÊM SÁCH      <<");
             System.out.println(">>      Tên sách       <<");
             String name = scanner.nextLine().toUpperCase();
-            if (!FixBug.isBookName(name)) {
+            if (!FixBug.isBookAuthorName(name)) {
                 System.err.println("Tên sách phải từ 3-50 ký tự!. Không hợp lệ");
                 continue;
             }
             System.out.println(">>      Tác giả      <<");
             String author = scanner.nextLine().toUpperCase();
-            if (!FixBug.isAuthor(author)) {
+            if (!FixBug.isBookAuthorName(author)) {
                 System.err.println("Tên tác giả phải từ 3-50 ký tự!. Không hợp lệ");
                 continue;
             }

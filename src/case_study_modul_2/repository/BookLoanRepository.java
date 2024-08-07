@@ -9,7 +9,6 @@ public class BookLoanRepository {
     private static BookLoanRepository bookLoanRepository;
 
     private BookLoanRepository() {
-
     }
 
     public static synchronized BookLoanRepository getRepository() {
@@ -21,12 +20,12 @@ public class BookLoanRepository {
 
     private final String BOOK_LOAN_FILE = "src/case_study_modul_2/data/bookloan.csv";
 
-    private void writeFile(HashMap<BookLoan, Integer> bookLoanMap) {
+    private void writeFile(HashMap<BookLoan, Integer> bookLoan) {
         try (
                 FileOutputStream fos = new FileOutputStream(BOOK_LOAN_FILE);
                 ObjectOutputStream oos = new ObjectOutputStream(fos)
         ) {
-            oos.writeObject(bookLoanMap);
+            oos.writeObject(bookLoan);
         } catch (IOException e) {
             System.err.println("Lỗi ghi file!!!");
         }
@@ -41,14 +40,14 @@ public class BookLoanRepository {
             bookLoanMap = (HashMap<BookLoan, Integer>) ois.readObject();
         } catch (EOFException eof) {
         } catch (ClassNotFoundException | IOException e) {
-            System.err.println(">>   Lỗi đọc file!!!   <<");
+            System.err.println("Lỗi đọc file!!!");
         }
         return bookLoanMap;
     }
 
     public void add(BookLoan bookLoan, int quantity) {
         HashMap<BookLoan, Integer> bookLoan2 = getAll();
-        if (bookLoan2.containsKey(bookLoan2)) {
+        if (bookLoan2.containsKey(bookLoan)) {
             bookLoan2.put(bookLoan, bookLoan2.get(bookLoan) + quantity);
         } else {
             bookLoan2.put(bookLoan, quantity);

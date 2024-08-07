@@ -41,11 +41,6 @@ public class BookLoan {
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(userNameBorrowed, nameBookBorrowed, authorBookBorrowed);
-    }
-
-    @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null || getClass()!= obj.getClass()) return false;
@@ -53,5 +48,10 @@ public class BookLoan {
         return Objects.equals(userNameBorrowed, bookLoan.userNameBorrowed) &&
                 Objects.equals(nameBookBorrowed, bookLoan.nameBookBorrowed) &&
                 Objects.equals(authorBookBorrowed, bookLoan.authorBookBorrowed);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(userNameBorrowed, nameBookBorrowed, authorBookBorrowed);
     }
 }

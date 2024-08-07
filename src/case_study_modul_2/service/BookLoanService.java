@@ -19,8 +19,8 @@ public class BookLoanService {
         return bookLoanService;
     }
 
-    private static final BookLoanRepository bookLoanRepository = BookLoanRepository.getRepository();
-    private static final LibraryView libraryView = LibraryView.getLibraryView();
+    private final BookLoanRepository bookLoanRepository = BookLoanRepository.getRepository();
+    private final LibraryView libraryView = LibraryView.getLibraryView();
 
     public HashMap<BookLoan, Integer> getAll() {
         return bookLoanRepository.getAll();
@@ -43,7 +43,7 @@ public class BookLoanService {
         return null;
     }
 
-    public static void findByUserName(String name) {
+    public void findByUserName(String name) {
         HashMap<BookLoan, Integer> bookLoanMap = bookLoanRepository.findByUserName(name);
         if (!bookLoanMap.isEmpty()) {
             libraryView.viewBookLoan(bookLoanMap);

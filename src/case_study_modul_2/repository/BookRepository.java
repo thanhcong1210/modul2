@@ -8,6 +8,9 @@ import java.util.HashMap;
 public class BookRepository {
     private static BookRepository bookRepository;
 
+    private BookRepository() {
+    }
+
     public static synchronized BookRepository getBookRepository() {
         if (bookRepository == null) {
             bookRepository = new BookRepository();
@@ -54,15 +57,15 @@ public class BookRepository {
 
     public boolean remove(Book book, int quantity) {
         HashMap<Book, Integer> book2 = getAll();
-        Integer value;
+        Integer choice;
         for (Book key : book2.keySet()) {
-            value = book2.get(key);
+            choice = book2.get(key);
             if (key.equals(book)) {
-                if (value > quantity) {
-                    book2.put(key, value - quantity);
+                if (choice > quantity) {
+                    book2.put(key, choice - quantity);
                     writeFile(book2);
                     return true;
-                } else if (value == quantity) {
+                } else if (choice == quantity) {
                     book2.remove(key);
                     writeFile(book2);
                     return true;

@@ -19,6 +19,16 @@ public class UserService {
         return userService;
     }
 
+    public boolean checkUsername(String username) {
+        List<User> user1 = userRepository.getAll();
+        for (User user : user1) {
+            if (user.getUsername().equals(username)){
+                return true;
+            }
+        }
+        return false;
+    }
+
     private final UserRepository userRepository = UserRepository.getUserRepository();
 
     public List<User> getAll() {
@@ -31,16 +41,6 @@ public class UserService {
 
     public boolean remove(String userName) {
         return userRepository.remove(userName);
-    }
-
-    public boolean checkUsername(String username) {
-        List<User> user1 = userRepository.getAll();
-        for (User user : user1) {
-            if (user.getUsername().equals(username)){
-                return true;
-            }
-        }
-        return false;
     }
 
 }

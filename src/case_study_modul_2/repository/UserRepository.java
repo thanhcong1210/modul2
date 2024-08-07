@@ -19,7 +19,7 @@ public class UserRepository {
         return userRepository;
     }
 
-    private static void writeFile(List<User> users) {
+    private void writeFile(List<User> users) {
         try (FileOutputStream fos = new FileOutputStream("src/case_study_modul_2/data/user.csv");
              ObjectOutputStream oos = new ObjectOutputStream(fos)
         ) {
@@ -37,7 +37,7 @@ public class UserRepository {
             user2 = (List<User>) ois.readObject();
         } catch (EOFException eof) {
         } catch (ClassNotFoundException | IOException e) {
-            System.err.println("Lỗi đọc file");
+            System.err.println("Lỗi đọc file!!!");
         }
         return user2;
     }
