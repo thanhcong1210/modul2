@@ -3,44 +3,41 @@ package case_study_modul_2.service;
 import case_study_modul_2.model.User;
 import case_study_modul_2.repository.UserRepository;
 
-import javax.management.openmbean.CompositeData;
 import java.util.List;
 
 public class UserService {
     private static UserService userService;
+    private final UserRepository userRepository = UserRepository.getRepository();
 
     private UserService() {
     }
 
-    public static synchronized UserService getUserService() {
+    public static synchronized UserService getService() {
         if (userService == null) {
             userService = new UserService();
         }
         return userService;
     }
 
-    public boolean checkUsername(String username) {
-        List<User> user1 = userRepository.getAll();
-        for (User user : user1) {
-            if (user.getUsername().equals(username)){
+    public boolean userName(String userName) {
+        List<User> userList = userRepository.getAll();
+        for (User user : userList) {
+            if (user.getName().equals(userName)) {
                 return true;
             }
         }
         return false;
     }
 
-    private final UserRepository userRepository = UserRepository.getUserRepository();
+    public boolean addUser(User user) {
+        return userRepository.add(user);
+    }
+
+    public boolean removeUser(String userName) {
+        return userRepository.remove(userName);
+    }
 
     public List<User> getAll() {
         return userRepository.getAll();
     }
-
-    public boolean add(User user) {
-        return userRepository.add(user);
-    }
-
-    public boolean remove(String userName) {
-        return userRepository.remove(userName);
-    }
-
 }

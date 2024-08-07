@@ -3,20 +3,18 @@ package case_study_modul_2.common;
 import java.util.Scanner;
 
 public class FixBug {
-    private static Scanner scanner = new Scanner(System.in);
-
+    static Scanner scanner = new Scanner(System.in);
     public static int checkChoice() {
         int choice;
         while (true) {
             try {
                 System.out.print("Nhập lựa chọn của bạn: ");
                 choice = Integer.parseInt(scanner.nextLine());
-                break;
+                return choice;
             } catch (NumberFormatException e) {
-                System.err.println("Error!!!");
+                System.out.println("Bạn nhập sai. Vui lòng nhập đúng!!!");
             }
         }
-        return choice;
     }
 
     public static int checkQuatity() {
@@ -38,23 +36,24 @@ public class FixBug {
     }
 
     private static final String USER_NAME = "^[a-zA-Z0-9]{6,16}$";
-    public static boolean isUserName(String username) {
-        return username.matches(USER_NAME);
-    }
-
     private static final String PASSWORD = "^[a-zA-Z0-9@]{6,16}$";
-    public static boolean isPassword(String password) {
+    private static final String EMAIL = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$";
+    private static final String STR = "^[^!@#$%^&*()_`~-]{1,300}$";
+    private static final String NAME = "^([A-ZĐÀ-ỹa-zđà-ỹ]{1,30}( [A-ZĐÀ-ỹa-zđà-ỹ]{1,30}){0,9})$";
+
+    public static boolean checkUserName(String userName) {
+        return userName.matches(USER_NAME);
+    }
+    public static boolean checkPassword(String password) {
         return password.matches(PASSWORD);
     }
-
-    private static final String EMAIL = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$";
-    public static boolean isEmail(String email) {
+    public static boolean checkEmail(String email) {
         return email.matches(EMAIL);
     }
-
-    private static final String BOOK_AUTHOR_NAME = "^[^!@#$%^&*()_`~-]{1,300}$";
-    public static boolean isBookAuthorName(String bookName) {
-        return bookName.matches(BOOK_AUTHOR_NAME);
+    public static boolean checkString(String str) {
+        return str.matches(STR);
     }
-
+    public static boolean checkName(String name) {
+        return name.matches(NAME);
+    }
 }

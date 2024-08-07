@@ -13,11 +13,11 @@ import java.util.HashMap;
 import java.util.List;
 
 public class LibraryController {
-    private final LibraryView libraryView = LibraryView.getLibraryView();
+    private final UserService userService = UserService.getService();
+    private final BookService bookService = BookService.getService();
+    private final BookLoanService bookLoanService = BookLoanService.getService();
+    private final LibraryView libraryView = LibraryView.getView();
     private final AdminService adminService = AdminService.getService();
-    private final BookService bookService = BookService.getBookService();
-    private final BookLoanService bookLoanService = BookLoanService.getBookLoanService();
-    private final UserService userService = UserService.getUserService();
 
     private static LibraryController libraryController;
 
@@ -31,26 +31,25 @@ public class LibraryController {
         return libraryController;
     }
 
-    String[] dang;
+    String[] go;
 
     public void begin() {
         boolean result;
         while (true) {
-            int choice = libraryView.homePageView();
+            int choice = libraryView.homePage();
             switch (choice) {
                 case 1:
-                    dang = libraryView.Login();
-                    result = adminService.loginAdmin(dang);
-                    if (!result) {
-                        libraryView.viewLogin(true);
+                    go = libraryView.login();
+                    result = adminService.loginAdmin(go);
+                    if (result) {
+                        libraryView.loginMessage(true);
                         handleAdmin();
-
                     } else {
-                        libraryView.viewLogin(false);
+                        libraryView.loginMessage(false);
                     }
                     break;
                 case 2:
-                    loginUser();
+                    handleUserLogin();
                     break;
                 case 0:
                     return;
@@ -58,157 +57,156 @@ public class LibraryController {
         }
     }
 
-    private void loginUser() {
-        boolean result;
-        List<User> user1;
-        User user;
+    private void handleAdmin() {
+        String string;
+        int quantity;
+        Book book;
+        List<User> userList;
+        HashMap<Book, Integer> book1;
+        HashMap<BookLoan, Integer> bookLoan;
         while (true) {
-            int choice = libraryView.userLoginView();
+            int choice = libraryView.adminMenuView();
+            boolean result;
             switch (choice) {
                 case 1:
-                    dang = libraryView.Login();
-                    user1 = userService.getAll();
-                    result = adminService.loginUser(user1, dang);
-                    if (result) {
-                        libraryView.viewLogin(true);
-                        handleUser();
-                    } else {
-                        libraryView.viewLogin(false);
-                    }
+                    book = libraryView.addBook();
+                    quantity = libraryView.quantityBook();
+                    libraryView.messageView(true);
                     break;
                 case 2:
-                    user = libraryView.Registration();
-                    result = userService.add(user);
-                    libraryView.viewRegister(result);
+                    book = libraryView.removeBookView();
+                    quantity = libraryView.quantityBook();
+                    if (libraryView.confirmRemove()) {
+                        result = bookService.remove(book, quantity);
+                        libraryView.messageView(result);
+                    } else {
+                        libraryView.messageCancel();
+                    }
                     break;
                 case 3:
+                    bookLoan = bookLoanService.getAll();
+                    libraryView.bookLoan(bookLoan);
+                    break;
+                case 4:
+                    book1 = bookService.getAll();
+                    libraryView.listBook(book1);
+                    break;
+                case 5:
+                    handleFindBook();
+                    break;
+                case 6:
+                    userList = userService.getAll();
+                    libraryView.listUserView(userList);
+                    break;
+                case 7:
+                    string = libraryView.removeUser();
+                    if (libraryView.confirmRemove()) {
+                        result = userService.removeUser(string);
+                        libraryView.messageView(result);
+                    } else {
+                        libraryView.messageCancel();
+                    }
+                    break;
+                case 0:
                     return;
             }
         }
     }
 
-    private void handleAdmin() {
-        Book book12;
-        String string;
-        int quantity;
-        List<User> user;
-        HashMap<Book, Integer> books;
-        HashMap<BookLoan, Integer> bookLoan;
+    private void handleUserLogin() {
+        User user;
+        boolean result;
+        List<User> userList;
         while (true) {
-            int choice = libraryView.adminPageView();
-            boolean result;
+            int choice = libraryView.loginUser();
             switch (choice) {
                 case 1:
-                    book12 = libraryView.viewAddBook();
-                    quantity = libraryView.viewQuantity();
-                    bookService.add(book12, quantity);
-                    libraryView.viewMessage(true);
+                    go = libraryView.login();
+                    userList = userService.getAll();
+                    result = adminService.loginUser(userList, go);
+                    if (result) {
+                        libraryView.loginMessage(true);
+                        handleUser();
+                    } else {
+                        libraryView.loginMessage(false);
+                    }
                     break;
                 case 2:
-                    book12 = libraryView.viewRemoveBook();
-                    quantity = libraryView.viewQuantity();
-                    if (libraryView.viewRemove()) {
-                        result = bookService.remove(book12, quantity);
-                        libraryView.viewMessage(result);
-                    } else {
-                        libraryView.viewCancel();
-                    }
+                    user = libraryView.registration();
+                    result = userService.addUser(user);
+                    libraryView.registrationMessage(result);
                     break;
-                case 3:
-                    books = bookService.getAll();
-                    libraryView.viewListBook(books);
-                    break;
-                case 4:
-                    FindBook();
-                    break;
-                case 5:
-                    bookLoan = bookLoanService.getAll();
-                    libraryView.viewBookLoan(bookLoan);
-                    break;
-                case 6:
-                    user = userService.getAll();
-                    libraryView.viewListUser(user);
-                    break;
-                case 7:
-                    string = libraryView.viewRemoveUser();
-                    if (libraryView.viewRemove()) {
-                        result = userService.remove(string);
-                        libraryView.viewMessage(result);
-                    } else {
-                        libraryView.viewCancel();
-                    }
-                    break;
-                case 8:
+                case 0:
                     return;
             }
         }
     }
 
     private void handleUser() {
-        Book book;
         BookLoan bookLoan;
+        Book book;
         HashMap<BookLoan, Integer> bookLoan2;
         while (true) {
-            int choice = libraryView.userPageView();
-            HashMap<Book, Integer> book2;
+            int choice = libraryView.userMenu();
             String string;
+            HashMap<Book, Integer> book2;
             switch (choice) {
                 case 1:
                     book2 = bookService.getAll();
-                    libraryView.viewListBook(book2);
+                    libraryView.listBook(book2);
                     break;
                 case 2:
-                    string = libraryView.viewBorrowedBook();
-                    book2 = bookService.getAll();
-                    book = bookService.getBookName(book2, string);
-                    if (book != null) {
-                        bookLoan = new BookLoan(dang[0], book.getName(), book.getAuthor());
-                        bookLoanService.add(bookLoan, 1);
-                        bookService.remove(book, 1);
-                        libraryView.viewMessage(true);
-                    } else {
-                        libraryView.viewMessage(false);
-                    }
+                    handleFindBook();
                     break;
                 case 3:
-                    string = libraryView.viewReturnedBook();
-                    bookLoan2 = bookLoanService.getAll();
-                    bookLoan = bookLoanService.getBookLoanName(bookLoan2, string);
-                    if (bookLoan != null && dang[0].equals(bookLoan.getUserNameBorrowed())) {
-                        book = new Book(bookLoan.getNameBookBorrowed(), bookLoan.getAuthorBookBorrowed());
-                        bookService.add(book, 1);
-                        bookLoanService.remove(bookLoan, 1);
-                        libraryView.viewMessage(true);
+                    string = libraryView.BorrowedBook();
+                    book2 = bookService.getAll();
+                    book = bookService.getBookByName(book2, string);
+                    if (book != null) {
+                        bookLoan = new BookLoan(go[0], book.getName(), book.getAuthor());
+                        bookLoanService.add(bookLoan, 1);
+                        bookService.remove(book, 1);
+                        libraryView.messageView(true);
                     } else {
-                        libraryView.viewMessage(false);
+                        libraryView.messageView(false);
                     }
                     break;
                 case 4:
-                    FindBook();
+                    bookLoanService.findByUserName(go[0]);
                     break;
                 case 5:
-                    BookLoanService.findByUserName(dang[0]);
+                    string = libraryView.returnBook();
+                    bookLoan2 = bookLoanService.getAll();
+                    bookLoan = bookLoanService.getBookLoanByName(bookLoan2, string);
+                    if (bookLoan != null && go[0].equals(bookLoan.getUserNameBorrowed())) {
+                        book = new Book(bookLoan.getNameBookBorrowed(), bookLoan.getAuthorBookBorrowed());
+                        bookService.add(book, 1);
+                        bookLoanService.remove(bookLoan, 1);
+                        libraryView.messageView(true);
+                    } else {
+                        libraryView.messageView(false);
+                    }
                     break;
-                case 6:
-                    return;
+                    case 0:
+                        return;
             }
         }
     }
 
-    private void FindBook() {
+   private void handleFindBook(){
         String string;
         while (true) {
-            int choice = libraryView.viewFindBook();
+            int choice = libraryView.findBook();
             switch (choice) {
                 case 1:
-                    string = libraryView.viewFindByName();
+                    string = libraryView.findByName();
                     bookService.findByName(string);
                     break;
                 case 2:
-                    string = libraryView.viewFindByAuthor();
+                    string = libraryView.findByAuthor();
                     bookService.findByAuthor(string);
                     break;
-                case 3:
+                case 0:
                     return;
             }
         }

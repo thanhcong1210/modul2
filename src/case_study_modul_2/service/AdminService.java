@@ -5,25 +5,27 @@ import case_study_modul_2.model.User;
 import java.util.List;
 
 public class AdminService {
-    private static AdminService adminService;
+    private static AdminService service;
 
-    public AdminService() {
+    private AdminService() {
     }
 
     public static synchronized AdminService getService() {
-        if (adminService == null) {
-            adminService = new AdminService();
+        if (service == null) {
+            service = new AdminService();
         }
-        return adminService;
+        return service;
     }
 
-    public boolean loginAdmin(String[] data) {
-        return data[0].equals("admin") && data[1].equals("123");
+    public boolean loginAdmin(String[] admin){
+        return admin[0].equals("admin")
+                && admin[1].equals("123");
     }
 
-    public boolean loginUser(List<User> users1, String[] user) {
-        for (User user1 : users1) {
-            if (user1.getUsername().equals(user[0]) && user1.getPassword().equals(user[1])) {
+    public boolean loginUser(List<User> userList, String[] account){
+        for (User user : userList) {
+            if (user.getUsername().equals(account[0])
+                    && user.getPassword().equals(account[1])) {
                 return true;
             }
         }

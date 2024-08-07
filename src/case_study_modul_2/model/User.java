@@ -1,15 +1,12 @@
 package case_study_modul_2.model;
 
 public class User {
+
     private String username;
     private String password;
     private String name;
     private String email;
 
-//        public User(String username, String password) {
-//        this.username = username;
-//        this.password = password;
-//    }
     public User(){
     }
 

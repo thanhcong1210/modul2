@@ -8,19 +8,18 @@ import java.util.HashMap;
 
 public class BookLoanService {
     private static BookLoanService bookLoanService;
+    private static LibraryView libraryView = LibraryView.getView();
+    private static BookLoanRepository bookLoanRepository = BookLoanRepository.getRepository();
 
     private BookLoanService() {
     }
 
-    public static synchronized BookLoanService getBookLoanService() {
+    public static synchronized BookLoanService getService() {
         if (bookLoanService == null) {
             bookLoanService = new BookLoanService();
         }
         return bookLoanService;
     }
-
-    private static final BookLoanRepository bookLoanRepository = BookLoanRepository.getRepository();
-    private static final LibraryView libraryView = LibraryView.getLibraryView();
 
     public HashMap<BookLoan, Integer> getAll() {
         return bookLoanRepository.getAll();
@@ -34,7 +33,7 @@ public class BookLoanService {
         return bookLoanRepository.remove(bookLoan, quantity);
     }
 
-    public BookLoan getBookLoanName(HashMap<BookLoan, Integer> bookLoan, String name) {
+    public BookLoan getBookLoanByName(HashMap<BookLoan, Integer> bookLoan, String name) {
         for (BookLoan key : bookLoan.keySet()) {
             if (key.getNameBookBorrowed().equals(name)) {
                 return key;
@@ -43,13 +42,12 @@ public class BookLoanService {
         return null;
     }
 
-    public static void findByUserName(String name) {
-        HashMap<BookLoan, Integer> bookLoanMap = bookLoanRepository.findByUserName(name);
+    public void findByUserName(String userName) {
+        HashMap<BookLoan, Integer> bookLoanMap = bookLoanRepository.findByUserName(userName);
         if (!bookLoanMap.isEmpty()) {
-            libraryView.viewBookLoan(bookLoanMap);
-        }else {
-            System.err.println("Không tìm thấy sách cần tìm!!!");
+            libraryView.bookLoan(bookLoanMap);
+        } else {
+           System.err.println("Không tìm thấy sách cần tìm!!!");
         }
     }
-
 }

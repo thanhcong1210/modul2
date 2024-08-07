@@ -7,6 +7,7 @@ import java.util.HashMap;
 
 public class BookLoanRepository {
     private static BookLoanRepository bookLoanRepository;
+    private final String BOOK_LOAN = "D:\\modul2\\untitled\\src\\case_study_modul_2\\data\\bookloan.dat";
 
     private BookLoanRepository() {
     }
@@ -18,55 +19,53 @@ public class BookLoanRepository {
         return bookLoanRepository;
     }
 
-    private final String BOOK_LOAN_FILE = "src/case_study_modul_2/data/bookloan.csv";
+    public HashMap<BookLoan, Integer> getAll() {
+        HashMap<BookLoan, Integer> bookLoan = new HashMap<BookLoan, Integer>();
+        try(
+                FileInputStream fis = new FileInputStream(BOOK_LOAN);
+                ObjectInputStream ois = new ObjectInputStream(fis)
+                ){
+            bookLoan = (HashMap<BookLoan, Integer>) ois.readObject();
+        } catch (EOFException ignored) {
+        } catch (IOException | ClassNotFoundException e) {
+            System.err.println("Lỗi đọc file!!!");
+        }
+        return bookLoan;
+    }
 
-    private void writeFile(HashMap<BookLoan, Integer> bookLoan) {
-        try (
-                FileOutputStream fos = new FileOutputStream(BOOK_LOAN_FILE);
+    private void writeFile(HashMap<BookLoan, Integer> bookLoan){
+        try(
+                FileOutputStream fos = new FileOutputStream(BOOK_LOAN);
                 ObjectOutputStream oos = new ObjectOutputStream(fos)
-        ) {
+        ){
             oos.writeObject(bookLoan);
         } catch (IOException e) {
             System.err.println("Lỗi ghi file!!!");
         }
     }
 
-    public HashMap<BookLoan, Integer> getAll() {
-        HashMap<BookLoan, Integer> bookLoanMap = new HashMap<>();
-        try (
-                FileInputStream fos = new FileInputStream(BOOK_LOAN_FILE);
-                ObjectInputStream ois = new ObjectInputStream(fos)
-        ) {
-            bookLoanMap = (HashMap<BookLoan, Integer>) ois.readObject();
-        } catch (EOFException eof) {
-        } catch (ClassNotFoundException | IOException e) {
-            System.err.println("Lỗi đọc file!!!");
-        }
-        return bookLoanMap;
-    }
-
-    public void add(BookLoan bookLoan, int quantity) {
-        HashMap<BookLoan, Integer> bookLoan2 = getAll();
-        if (bookLoan2.containsKey(bookLoan)) {
-            bookLoan2.put(bookLoan, bookLoan2.get(bookLoan) + quantity);
+    public void add(BookLoan bookLoan, int quantity){
+        HashMap<BookLoan, Integer> bookLoanMap = getAll();
+        if (bookLoanMap.containsKey(bookLoan)) {
+            bookLoanMap.put(bookLoan, bookLoanMap.get(bookLoan) + quantity);
         } else {
-            bookLoan2.put(bookLoan, quantity);
+            bookLoanMap.put(bookLoan, quantity);
         }
-        writeFile(bookLoan2);
+        writeFile(bookLoanMap);
     }
 
-    public boolean remove(BookLoan bookLoan, int quantity) {
+    public boolean remove(BookLoan bookLoan, int quantity){
         HashMap<BookLoan, Integer> bookLoanMap = getAll();
         Integer choice;
         for (BookLoan key : bookLoanMap.keySet()) {
             choice = bookLoanMap.get(key);
             if (key.equals(bookLoan)) {
-                if (choice > quantity) {
-                    bookLoanMap.put(key, choice - quantity);
+                if (choice == quantity) {
+                    bookLoanMap.remove(key);
                     writeFile(bookLoanMap);
                     return true;
-                } else if (choice == quantity) {
-                    bookLoanMap.remove(key);
+                } else if (choice > quantity) {
+                    bookLoanMap.put(key, choice - quantity);
                     writeFile(bookLoanMap);
                     return true;
                 } else {

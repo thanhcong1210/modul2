@@ -6,43 +6,64 @@ import java.io.*;
 import java.util.HashMap;
 
 public class BookRepository {
+    private static final String FILE_BOOK = "D:\\modul2\\untitled\\src\\case_study_modul_2\\data\\book.dat";
     private static BookRepository bookRepository;
 
     private BookRepository() {
     }
 
-    public static synchronized BookRepository getBookRepository() {
+    public static synchronized BookRepository getRepository() {
         if (bookRepository == null) {
             bookRepository = new BookRepository();
         }
         return bookRepository;
     }
 
-    private final String BOOK_FILE = "src/case_study_modul_2/data/book.csv";
-
-    private void writeFile(HashMap<Book, Integer> bookMap) {
-        try (
-                FileOutputStream fos = new FileOutputStream(BOOK_FILE);
-                ObjectOutputStream oos = new ObjectOutputStream(fos)
-        ) {
-            oos.writeObject(bookMap);
-        } catch (Exception e) {
-            System.err.println("Lỗi ghi file!!!");
+    public boolean remove(Book book, int quantity) {
+        HashMap<Book, Integer> book1 = getAll();
+        Integer choice;
+        for (Book key : book1.keySet()) {
+            choice = book1.get(key);
+            if (key.equals(book)) {
+                if (choice > quantity) {
+                    book1.put(key, choice - quantity);
+                    writeFile(book1);
+                    return true;
+                } else if (choice == quantity) {
+                    book1.remove(key);
+                    writeFile(book1);
+                    return true;
+                } else {
+                    return false;
+                }
+            }
         }
+        return false;
     }
 
     public HashMap<Book, Integer> getAll() {
         HashMap<Book, Integer> book = new HashMap<>();
-        try (
-                FileInputStream fis = new FileInputStream(BOOK_FILE);
+        try(
+                FileInputStream fis = new FileInputStream(FILE_BOOK);
                 ObjectInputStream ois = new ObjectInputStream(fis)
-        ) {
+                ) {
             book = (HashMap<Book, Integer>) ois.readObject();
-        } catch (EOFException eof) {
-        } catch (ClassNotFoundException | IOException e) {
+        } catch (EOFException ignored) {
+        } catch (IOException | ClassNotFoundException e) {
             System.err.println("Lỗi đọc file!!!");
         }
         return book;
+    }
+
+    public void writeFile(HashMap<Book, Integer> book){
+        try(
+                FileOutputStream fos = new FileOutputStream(FILE_BOOK);
+                ObjectOutputStream oos = new ObjectOutputStream(fos);
+                ){
+            oos.writeObject(book);
+        } catch (IOException e) {
+            System.err.println("Lỗi ghi file!!!");
+        }
     }
 
     public void add(Book book, int quantity) {
@@ -53,28 +74,6 @@ public class BookRepository {
             book1.put(book, quantity);
         }
         writeFile(book1);
-    }
-
-    public boolean remove(Book book, int quantity) {
-        HashMap<Book, Integer> book2 = getAll();
-        Integer choice;
-        for (Book key : book2.keySet()) {
-            choice = book2.get(key);
-            if (key.equals(book)) {
-                if (choice > quantity) {
-                    book2.put(key, choice - quantity);
-                    writeFile(book2);
-                    return true;
-                } else if (choice == quantity) {
-                    book2.remove(key);
-                    writeFile(book2);
-                    return true;
-                }else {
-                    return false;
-                }
-            }
-        }
-        return false;
     }
 
     public HashMap<Book, Integer> findByName(String name) {
@@ -88,7 +87,7 @@ public class BookRepository {
         return result;
     }
 
-    public HashMap<Book, Integer> findByAuthor(String author) {
+    public HashMap<Book, Integer> findByAuthor(String author){
         HashMap<Book, Integer> bookMap = getAll();
         HashMap<Book, Integer> result = new HashMap<>();
         for (Book key : bookMap.keySet()) {

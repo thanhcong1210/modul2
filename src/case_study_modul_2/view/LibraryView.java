@@ -12,283 +12,293 @@ import java.util.Scanner;
 public class LibraryView {
     Scanner scanner = new Scanner(System.in);
 
-    public static LibraryView view;
+    private static LibraryView view;
 
     private LibraryView() {
     }
 
-    public static synchronized LibraryView getLibraryView() {
+    public static synchronized LibraryView getView() {
         if (view == null) {
             view = new LibraryView();
         }
         return view;
     }
 
-    public int homePageView() {
-        System.out.println(">>      XIN CHÀO    <<");
+    public int homePage() {
+        System.out.println(">>      XIN CHÀO      <<");
+        System.out.println("Bạn là: ");
         System.out.println("1. Admin");
         System.out.println("2. Người dùng");
-        System.out.println("3. Thoát");
+        System.out.println("0. Thoát");
         int choice;
         do {
             choice = FixBug.checkChoice();
-            if (choice < 1 || choice > 3) {
-                System.err.println("Lựa chọn không đúng\n");
+            if (choice < 0 || choice > 2) {
+                System.err.println("Lựa chọn không đúng!!!");
             } else {
                 return choice;
             }
         } while (true);
     }
 
-    public int adminPageView() {
-        System.out.println(">>      ADMIN      <<");
+    public int adminMenuView() {
+        System.out.println(">>      ADMIN MENU     <<");
         System.out.println("1. Thêm sách");
         System.out.println("2. Xóa sách");
-        System.out.println("3. Hiển thị sách hiện tại");
-        System.out.println("4. Tìm sách");
-        System.out.println("5. Sách cho mượn");
-        System.out.println("6. Xem danh sách thành viên");
+        System.out.println("3. Sách đang cho mượn");
+        System.out.println("4. Sách hiện tại");
+        System.out.println("5. Tìm sách");
+        System.out.println("6. Danh sách thành viên");
         System.out.println("7. Xóa thành viên");
-        System.out.println("8. Quay lại");
-        System.out.print("Chọn chức năng: ");
+        System.out.println("0. Trở lại");
         int choice;
         do {
             choice = FixBug.checkChoice();
-            if (choice < 1 || choice > 8) {
-                System.err.println("Lựa chọn không khả dụng\n");
+            if (choice < 0 || choice > 7) {
+                System.err.println("Lựa chọn không đúng!!!");
             } else {
                 return choice;
             }
         } while (true);
     }
 
-    public int userPageView() {
-        System.out.println(">>      NGƯỜI DÙNG      <<");
-        System.out.println("1. Xem sách hiện tại");
-        System.out.println("2. Mượn sách");
-        System.out.println("3. Trả sách");
-        System.out.println("4. Tìm sách");
-        System.out.println("5. Sách đang mượn");
-        System.out.println("6. Quay lại");
-        System.out.print("Chọn chức năng: ");
+    public int userMenu() {
+        System.out.println(">>      USER MENU      <<");
+        System.out.println("1. Sách hiện tại");
+        System.out.println("2. Tìm sách");
+        System.out.println("3. Mượn sách");
+        System.out.println("4. Sách đang mượn");
+        System.out.println("5. Trả sách");
+        System.out.println("0. Trở lại");
         int choice;
         do {
             choice = FixBug.checkChoice();
-            if (choice < 1 || choice > 6) {
-                System.err.println("Lựa chọn không đúng");
+            if (choice < 0 || choice > 5) {
+                System.err.println("Lựa chọn không đúng!!!");
             } else {
                 return choice;
             }
         } while (true);
     }
 
-    public int userLoginView() {
-        System.out.println(">>      TRANG ĐĂNG NHẬP      <<");
+    public int loginUser() {
+        System.out.println(">>     MENU     <<");
         System.out.println("1. Đăng nhập");
         System.out.println("2. Đăng ký");
-        System.out.println("3. Quay lại");
+        System.out.println("0. Trở lại");
         int choice;
         do {
             choice = FixBug.checkChoice();
-            if (choice < 1 || choice > 3) {
-                System.err.println("Lựa chọn không đúng");
+            if (choice < 0 || choice > 2) {
+                System.err.println("Lựa chọn không đúng!!!");
             } else {
                 return choice;
             }
         } while (true);
     }
 
-    public User Registration() {
+    public String[] login() {
+        System.out.println(">>      ĐĂNG NHẬP     <<");
+        System.out.println("Tài khoản :");
+        String userName = scanner.nextLine().toUpperCase();
+        System.out.println("Mật khẩu :");
+        String password = scanner.nextLine();
+        return new String[]{userName, password};
+    }
+
+    public User registration() {
         do {
-            System.out.println(">>      ĐĂNG KÝ      <<");
-            System.out.println("Tài khoản");
+            System.out.println(">>       ĐĂNG KÝ       <<");
+            System.out.print("Tên tài khoản: ");
             String username = scanner.nextLine().toUpperCase();
-            if (!FixBug.isUserName(username)) {
-                System.err.println("Tên đăng nhập phải là chữ cái hoặc số! (từ 6-16 ký tự!!!)");
+            if (!FixBug.checkUserName(username)) {
+                System.err.println("Tên đăng nhập phải là chữ cái hoặc số! (từ 6-16 ký tự!!!)\n");
                 continue;
             }
             System.out.print("Mật khẩu: ");
             String password = scanner.nextLine();
-            if (!FixBug.isPassword(password)) {
-                System.err.println("Mật khẩu phải là chữ cái, số hoặc ký tự đặc biệt (từ 8-16 ký tự!!!)");
+            if (!FixBug.checkPassword(password)) {
+                System.err.println("Mật khẩu phải là chữ cái, số hoặc ký tự đặc biệt (từ 8-16 ký tự!!!)\n");
                 continue;
             }
             System.out.print("Xác nhận mật khẩu: ");
             String confirmPassword = scanner.nextLine();
             if (!confirmPassword.equals(password)) {
-                System.err.println("Mật khẩu xác nhận không trùng kh��p!");
+                System.err.println("Mật khẩu xác nhận không trùng kh��p!\n");
                 continue;
             }
-            System.out.print("Họ tên: ");
+            System.out.print("Họ và tên: ");
             String name = scanner.nextLine().toUpperCase();
+            if (!FixBug.checkName(name)) {
+                System.err.println("Họ và tên phải là chữ cái (từ 2-50 ký tự!!!)\n");
+                continue;
+            }
             System.out.print("Email: ");
-            String email = scanner.nextLine();
-            if (!FixBug.isEmail(email)) {
-                System.err.println("Email không hợp lệ!");
+            String email = scanner.nextLine().toLowerCase();
+            if (!FixBug.checkEmail(email)) {
+                System.err.println("Email không hợp lệ! (vd: example@gmail.com)\n");
                 continue;
             }
             return new User(username, password, name, email);
         } while (true);
     }
 
-    public String[] Login() {
-        System.out.println(">>      ĐĂNG NHẬP      <<");
-        System.out.print("Tên tài khoản: ");
-        String userName = scanner.nextLine().toUpperCase();
-        System.out.print("Mật khẩu: ");
-        String password = scanner.nextLine();
-        return new String[]{userName, password};
-    }
-
-    public void viewLogin(boolean result) {
-        if (result) {
-            System.out.println(">>    Đăng nhập thành công   <<");
+    public void loginMessage(boolean login) {
+        if (login) {
+            System.out.println("Đăng nhập thành công!");
         } else {
-            System.err.println(">>    Đăng nhập thất bại     <<");
+            System.out.println("Đăng nhập thất bại!!!");
         }
     }
 
-    public void viewRegister(boolean result) {
-        if (result) {
-            System.out.println(">>    Đăng ký thành công     <<");
+    public void registrationMessage(boolean registration) {
+        if (registration) {
+            System.out.println("Đăng ký thành công!");
         } else {
-            System.err.println(">>    Đăng ký thất bại     <<");
+            System.out.println("Đăng ký thất bại!!!");
         }
     }
 
-    public void viewMessage(boolean result) {
-        if (result) {
-            System.out.println(">>     Thông báo thành công    <<");
+    public void messageView(boolean enabled) {
+        if (enabled) {
+            System.out.println("Thao tác thành công");
         } else {
-            System.err.println(">>     Thông báo thất bại      <<");
+            System.err.println("Thac tác thất bại!!!");
         }
     }
 
-    public Book viewAddBook() {
+    public Book addBook() {
         do {
-            System.out.println(">>      THÊM SÁCH      <<");
-            System.out.println(">>      Tên sách       <<");
-            String name = scanner.nextLine().toUpperCase();
-            if (!FixBug.isBookAuthorName(name)) {
-                System.err.println("Tên sách phải từ 3-50 ký tự!. Không hợp lệ");
+            System.out.println(">>     THÊM SÁCH    <<");
+            System.out.print("Tên sách: ");
+            String title = scanner.nextLine().toUpperCase();
+            if (!FixBug.checkString(title)) {
+                System.err.println("Tên sách phải là chữ cái (từ 2-50 ký tự!!!)\n");
                 continue;
             }
-            System.out.println(">>      Tác giả      <<");
+            System.out.print("Tác giả: ");
             String author = scanner.nextLine().toUpperCase();
-            if (!FixBug.isBookAuthorName(author)) {
-                System.err.println("Tên tác giả phải từ 3-50 ký tự!. Không hợp lệ");
+            if (!FixBug.checkString(author)) {
+                System.err.println("Tác giả phải là chữ cái (từ 2-50 ký tự!!!)\n");
                 continue;
             }
-            return new Book(name, author);
+            return new Book(title, author);
         } while (true);
     }
 
-    public Book viewRemoveBook() {
-        System.out.println(">>      XÓA SÁCH      <<");
-        System.out.print("Tên sách: ");
+    public Book removeBookView() {
+        System.out.println(">>      XÓA SÁCH     <<");
+        System.out.println("Tên sách :");
         String name = scanner.nextLine().toUpperCase();
-        System.out.print("Tác giả: ");
+        System.out.println("Tác giả :");
         String author = scanner.nextLine().toUpperCase();
         return new Book(name, author);
     }
 
-    public int viewFindBook() {
-        System.out.println(">>      TÌM SÁCH      <<");
-        System.out.print("1. Tìm theo tên sách ");
-        System.out.print("2. Tìm theo tên tác giả ");
-        System.out.print("3. Trở lại ");
+    public int quantityBook() {
+        return FixBug.checkQuatity();
+    }
+
+    public void listUserView(List<User> user1) {
+        System.out.println(">>      DANH SÁCH THÀNH VIÊN     <<");
+        System.out.println("Tên đăng nhập");
+        System.out.println("Họ và tên");
+        System.out.println("Email");
+        for (User user : user1) {
+            System.out.println(user.getUsername());
+            System.out.println(user.getName());
+            System.out.println(user.getEmail());
+        }
+    }
+
+    public String removeUser(){
+        System.out.println(">>     XÓA THÀNH VIÊN     <<");
+        System.out.println("Nhập tên tài khoản cần xóa");
+        return scanner.nextLine().toUpperCase();
+    }
+
+    public void listBook(HashMap<Book, Integer> book) {
+        System.out.println(">>      SÁCH HIỆN TẠI    <<");
+        System.out.println("Tên sách");
+        System.out.println("Tác giả");
+        System.out.println("Số lượng");
+        for (Book key : book.keySet()) {
+            Integer value = book.get(key);
+            System.out.println(key.getName());
+            System.out.println(key.getAuthor());
+            System.out.println(value);
+        }
+    }
+
+    public int findBook() {
+        System.out.println(">>     TÌM SÁCH     <<");
+        System.out.println("1. Tìm theo tên :");
+        System.out.println("2. Tìm theo tác giả");
+        System.out.println("0. Trở lại");
         int choice;
         do {
             choice = FixBug.checkChoice();
-            if (choice < 1 || choice > 3) {
-                System.err.println(">>      Lựa chọn không đúng      <<");
+            if (choice < 0 || choice > 2) {
+                System.err.println("Lựa chọn không đúng!!!");
             } else {
                 return choice;
             }
         } while (true);
     }
 
-    public String viewFindByName() {
-        System.out.print("Tên sách cần tìm : ");
+    public String findByName() {
+        System.out.println("Nhập tên sách cần tìm :");
         return scanner.nextLine().toUpperCase();
     }
 
-    public String viewFindByAuthor() {
-        System.out.print("Tên tác giả cần tìm : ");
+    public String findByAuthor() {
+        System.out.println("Nhập tác giả sách cần tìm :");
         return scanner.nextLine().toUpperCase();
     }
 
-    public void viewBookLoan(HashMap<BookLoan, Integer> bookLoan) {
-        System.out.println(">>      SÁCH ĐANG CHO MƯỢN      <<");
+    public boolean confirmRemove() {
+        do {
+            System.out.println("Bạn có muốn xóa (nhấn A để đồng ý , nhấn F để hủy)");
+            String confirm = scanner.nextLine();
+            confirm = confirm.toUpperCase();
+            if (confirm.equals("A")) {
+                return true;
+            } else if (confirm.equals("F")) {
+                return false;
+            } else {
+                System.err.println("Lựa chọn không đúng!!!");
+            }
+        } while (true);
+    }
+
+    public void messageCancel() {
+        System.out.println("Thao tác không thành công!!!");
+    }
+
+    public String BorrowedBook() {
+        System.out.println(">>       MƯỢN SÁCH      <<");
+        System.out.println("Nhập tên cần mượn :");
+        return scanner.nextLine().toUpperCase();
+    }
+
+    public String returnBook() {
+        System.out.println(">>       TRẢ SÁCH      <<");
+        System.out.println("Nhập tên cần trả :");
+        return scanner.nextLine().toUpperCase();
+    }
+
+    public void bookLoan(HashMap<BookLoan, Integer> bookLoan) {
+        System.out.println(">>     SÁCH ĐANG MƯỢN     <<");
         System.out.println("Tài khoản");
         System.out.println("Tên sách");
         System.out.println("Tác giả");
         for (BookLoan key : bookLoan.keySet()) {
             Integer value = bookLoan.get(key);
-            System.out.format(key.getUserNameBorrowed(), key.getNameBookBorrowed(), key.getAuthorBookBorrowed(), value);
+            System.out.println(key.getUserNameBorrowed());
+            System.out.println(key.getNameBookBorrowed());
+            System.out.println(key.getAuthorBookBorrowed());
+            System.out.println(value);
         }
-    }
 
-    public void viewListBook(HashMap<Book, Integer> book) {
-        System.out.println(">>      SÁCH HIỆN TẠI      <<");
-        System.out.println("Tên sách");
-        System.out.println("Tác giả");
-        System.out.println("Số lượng");
-        for (Book key : book.keySet()) {
-            Integer value = book.get(key);
-            System.out.format(key.getName(), key.getAuthor(), value);
-        }
     }
-
-    public String viewBorrowedBook() {
-        System.out.println(">>      MƯỢN SÁCH      <<");
-        System.out.println("Nhập tên sách cần mượn");
-        return scanner.nextLine().toUpperCase();
-    }
-
-    public String viewReturnedBook() {
-        System.out.println(">>      TRẢ SÁCH      <<");
-        System.out.println("Nhập tên sách cần trả");
-        return scanner.nextLine().toUpperCase();
-    }
-
-    public boolean viewRemove() {
-        do {
-            System.out.println("Bạn có đồng ý xóa (nhấn M để đồng ý xóa, nhấn N để hủy");
-            String choice = scanner.nextLine();
-            choice = choice.toUpperCase();
-            if (choice.equals("M")) {
-                return true;
-            } else if (choice.equals("N")) {
-                return false;
-            } else {
-                System.err.println(">>      Lựa chọn không hợp lệ     <<");
-            }
-        } while (true);
-    }
-
-    public void viewCancel() {
-        System.out.println("Thông báo hủy");
-    }
-
-    public void viewListUser(List<User> users) {
-        System.out.println(">>      DANH SÁCH NGƯỜI DÙNG      <<");
-        System.out.println("Tài khoản");
-        System.out.println("Họ tên");
-        System.out.println("Email");
-        for (User user : users) {
-            System.out.format("%s, %s, %s%n", user.getUsername(), user.getName(), user.getEmail());
-        }
-    }
-
-    public String viewRemoveUser() {
-        System.out.println(">>      XÓA NGƯỜI DÙNG      <<");
-        System.out.print("Tài khoản cần xóa: ");
-        return scanner.nextLine().toUpperCase();
-    }
-
-    public int viewQuantity() {
-        return FixBug.checkQuatity();
-    }
-
 }
