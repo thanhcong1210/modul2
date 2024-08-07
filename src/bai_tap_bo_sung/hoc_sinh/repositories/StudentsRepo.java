@@ -1,21 +1,21 @@
-package luyen_tap.khong_biet.repositories;
+package bai_tap_bo_sung.hoc_sinh.repositories;
 
-import luyen_tap.khong_biet.models.Student;
+import bai_tap_bo_sung.hoc_sinh.models.Student;
 
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class StudentsRepo {
-    static final String URL_CODE = "src/luyen_tap/khong_biet/batchs.csv/batchs.csv.csv";
-    static final String URL_DATA = "src/luyen_tap/khong_biet/batchs.csv/students.csv.csv";
-    static final String URL_DATATERCHER = "src/luyen_tap/khong_biet/batchs.csv/teacher.csv.csv";
+    static final String URL_CODE = "src/bai_tap_bo_sung/hoc_sinh/data/batchs.csv";
+    static final String URL_DATA = "src/bai_tap_bo_sung/hoc_sinh/data/students.csv";
+    static final String URL_DATATERCHER = "src/bai_tap_bo_sung/hoc_sinh/data/teacher.csv";
 
     public static String readCodeClass() {
-
         File file = new File(URL_CODE);
-        try (FileReader fileReader = new FileReader(file);
-             BufferedReader bufferedReader = new BufferedReader(fileReader)) {
+        try(FileReader fileReader = new FileReader(file);
+            BufferedReader bufferedReader = new BufferedReader(fileReader))
+        {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 return line;
@@ -52,15 +52,14 @@ public class StudentsRepo {
         List<Student> students = new ArrayList<>();
         File file = new File(URL_DATA);
 
-        try (FileReader fileReader = new FileReader(file);
-             BufferedReader bufferedReader = new BufferedReader(fileReader)) {
+        try(FileReader fileReader = new FileReader(file);
+            BufferedReader bufferedReader = new BufferedReader(fileReader))
+        {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 String[] tem = line.split(",");
-                students.add(new Student(tem[0], tem[1], tem[2], tem[3], tem[4]));
-
+                students.add(new Student(tem[0],tem[1],tem[2],tem[3],tem[4]));
             }
-
         } catch (FileNotFoundException e) {
             System.err.println("Không tìm thất File");
         } catch (IOException e) {
@@ -72,7 +71,7 @@ public class StudentsRepo {
     public Student findStudent(int id) {
         List<Student> students = getAllAdmin();
         for (Student student : students) {
-            if (student.getStudentCode() == id) {
+            if(student.getStudentCode() == id){
                 return student;
             }
         }
@@ -98,15 +97,14 @@ public class StudentsRepo {
         List<Student> students = new ArrayList<>();
         File file = new File(URL_DATATERCHER);
 
-        try (FileReader fileReader = new FileReader(file);
-             BufferedReader bufferedReader = new BufferedReader(fileReader)) {
+        try(FileReader fileReader = new FileReader(file);
+            BufferedReader bufferedReader = new BufferedReader(fileReader))
+        {
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 String[] tem = line.split(",");
-                students.add(new Student(tem[0], tem[1], tem[2], tem[3], tem[4]));
-
+                students.add(new Student(tem[0],tem[1],tem[2],tem[3],tem[4]));
             }
-
         } catch (FileNotFoundException e) {
             System.err.println("Không tìm thất File");
         } catch (IOException e) {
@@ -114,4 +112,5 @@ public class StudentsRepo {
         }
         return students;
     }
+
 }

@@ -12,7 +12,7 @@ public class CompanyManager {
     public static String getCompany() throws IOException {
         Scanner sc = new Scanner(System.in);
         List<String> listCompany = new ArrayList<>();
-        File file = new File("src/luyen_tap.phuong_tien_giao_thong/data/hangSanXuat");
+        File file = new File("src/luyen_tap.phuong_tien_giao_thong/batchs.csv/hangSanXuat");
         FileReader fr = new FileReader(file);
         BufferedReader br = new BufferedReader(fr);
         String line;

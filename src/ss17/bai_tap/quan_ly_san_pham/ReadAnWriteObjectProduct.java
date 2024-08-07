@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class ReadAnWriteObjectProduct {
-    final static String PRODUCT_PATH = "src/ss17/bai_tap/quan_ly_san_pham/data/product.dat";
+    final static String PRODUCT_PATH = "src/ss17/bai_tap/quan_ly_san_pham/batchs.csv/product.dat";
 
     public static void writeObjectProduct(ArrayList<Product> listProduct) {
         File file = new File(PRODUCT_PATH);

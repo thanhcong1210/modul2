@@ -30,6 +30,6 @@ public class UngDungDemSoLuongSinhVienThiDo {
             if (array[j] >= 5 && array[j] <= 10)
                 count++;
         }
-        System.out.print("\n The number of students passing the exam is " + count);
+        System.out.print("\n The number of students.csv passing the exam is " + count);
     }
 }

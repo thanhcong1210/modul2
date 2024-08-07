@@ -14,9 +14,9 @@ import static luyen_tap.phuong_tien_giao_thong.view.ReadAndWrite.*;
 import static luyen_tap.phuong_tien_giao_thong.view.VehicleManager.*;
 
 public class FactoryVehicle {
-    public static String linkFileTruck = "src/luyen_tap.phuong_tien_giao_thong/data/truck.txt";
-    public static String linkFileCar = "src/luyen_tap.phuong_tien_giao_thong/data/car.txt";
-    public static String linkFileMotorBike = "src/luyen_tap.phuong_tien_giao_thong/data/motorbike.txt";
+    public static String linkFileTruck = "src/luyen_tap.phuong_tien_giao_thong/batchs.csv/truck.txt";
+    public static String linkFileCar = "src/luyen_tap.phuong_tien_giao_thong/batchs.csv/car.txt";
+    public static String linkFileMotorBike = "src/luyen_tap.phuong_tien_giao_thong/batchs.csv/motorbike.txt";
     public static List<Truck> truckManager = new ArrayList<>();
     public static List<Car> carManager = new ArrayList<>();
     public static List<MotorBike> motorBikeManager = new ArrayList<>();
