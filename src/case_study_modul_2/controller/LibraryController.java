@@ -41,9 +41,10 @@ public class LibraryController {
                 case 1:
                     dang = libraryView.Login();
                     result = adminService.loginAdmin(dang);
-                    if (result) {
+                    if (!result) {
                         libraryView.viewLogin(true);
                         handleAdmin();
+
                     } else {
                         libraryView.viewLogin(false);
                     }
