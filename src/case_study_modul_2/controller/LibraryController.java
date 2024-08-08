@@ -24,7 +24,7 @@ public class LibraryController {
     private LibraryController() {
     }
 
-    public static synchronized LibraryController getLibraryController() {
+    public static synchronized LibraryController getController() {
         if (libraryController == null) {
             libraryController = new LibraryController();
         }
@@ -40,7 +40,7 @@ public class LibraryController {
             switch (choice) {
                 case 1:
                     go = libraryView.login();
-                    result = adminService.loginAdmin(go);
+                    result = adminService.checkLoginAdmin(go);
                     if (result) {
                         libraryView.loginMessage(true);
                         handleAdmin();
@@ -71,6 +71,7 @@ public class LibraryController {
                 case 1:
                     book = libraryView.addBook();
                     quantity = libraryView.quantityBook();
+                    bookService.add(book, quantity);
                     libraryView.messageView(true);
                     break;
                 case 2:

@@ -1,8 +1,11 @@
 package case_study_modul_2.model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class BookLoan {
+public class BookLoan implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     private String userNameBorrowed;
     private String nameBookBorrowed;
     private String authorBookBorrowed;

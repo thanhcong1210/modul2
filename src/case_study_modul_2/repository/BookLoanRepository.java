@@ -7,7 +7,7 @@ import java.util.HashMap;
 
 public class BookLoanRepository {
     private static BookLoanRepository bookLoanRepository;
-    private final String BOOK_LOAN = "D:\\modul2\\untitled\\src\\case_study_modul_2\\data\\bookloan.dat";
+    private final String BOOK_LOAN = "src/case_study_modul_2/data/bookloan.dat";
 
     private BookLoanRepository() {
     }

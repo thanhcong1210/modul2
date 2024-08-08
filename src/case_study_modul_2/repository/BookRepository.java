@@ -6,7 +6,7 @@ import java.io.*;
 import java.util.HashMap;
 
 public class BookRepository {
-    private static final String FILE_BOOK = "D:\\modul2\\untitled\\src\\case_study_modul_2\\data\\book.dat";
+    private static final String FILE_BOOK = "src/case_study_modul_2/data/book.dat";
     private static BookRepository bookRepository;
 
     private BookRepository() {

@@ -10,11 +10,12 @@ public class FixBug {
             try {
                 System.out.print("Nhập lựa chọn của bạn: ");
                 choice = Integer.parseInt(scanner.nextLine());
-                return choice;
+                break;
             } catch (NumberFormatException e) {
                 System.out.println("Bạn nhập sai. Vui lòng nhập đúng!!!");
             }
         }
+        return choice;
     }
 
     public static int checkQuatity() {

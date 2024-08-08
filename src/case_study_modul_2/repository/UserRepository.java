@@ -8,7 +8,7 @@ import java.util.List;
 
 public class UserRepository {
     private static UserRepository userRepository;
-    private static final String USER = "D:\\modul2\\untitled\\src\\case_study_modul_2\\data\\user.dat";
+    private static final String USER = "src/case_study_modul_2/data/user.dat";
 
     private UserRepository() {
     }

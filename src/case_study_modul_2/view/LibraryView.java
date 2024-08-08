@@ -143,11 +143,11 @@ public class LibraryView {
         } while (true);
     }
 
-    public void loginMessage(boolean login) {
-        if (login) {
-            System.out.println("Đăng nhập thành công!");
+    public void loginMessage(boolean result) {
+        if (result) {
+            System.out.println("Đăng nhập thành công");
         } else {
-            System.out.println("Đăng nhập thất bại!!!");
+            System.err.println("Đăng nhập thất bại!!!");
         }
     }
 
@@ -200,14 +200,11 @@ public class LibraryView {
     }
 
     public void listUserView(List<User> user1) {
-        System.out.println(">>      DANH SÁCH THÀNH VIÊN     <<");
-        System.out.println("Tên đăng nhập");
-        System.out.println("Họ và tên");
-        System.out.println("Email");
         for (User user : user1) {
-            System.out.println(user.getUsername());
-            System.out.println(user.getName());
-            System.out.println(user.getEmail());
+            System.out.println(">>      DANH SÁCH THÀNH VIÊN     <<");
+            System.out.println("Tên đăng nhập" + " : " + user.getUsername());
+            System.out.println("Họ và tên" + " : " + user.getName());
+            System.out.println("Email" + " : " + user.getEmail());
         }
     }
 
@@ -218,15 +215,12 @@ public class LibraryView {
     }
 
     public void listBook(HashMap<Book, Integer> book) {
-        System.out.println(">>      SÁCH HIỆN TẠI    <<");
-        System.out.println("Tên sách");
-        System.out.println("Tác giả");
-        System.out.println("Số lượng");
         for (Book key : book.keySet()) {
             Integer value = book.get(key);
-            System.out.println(key.getName());
-            System.out.println(key.getAuthor());
-            System.out.println(value);
+            System.out.println(">>      SÁCH HIỆN TẠI    <<");
+            System.out.println("Tên sách" + " : " +   key.getName());
+            System.out.println("Tác giả" + " : " + key.getAuthor());
+            System.out.println("Số lượng" + " : " + value);
         }
     }
 

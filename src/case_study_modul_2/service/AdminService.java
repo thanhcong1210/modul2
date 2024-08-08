@@ -17,9 +17,9 @@ public class AdminService {
         return service;
     }
 
-    public boolean loginAdmin(String[] admin){
-        return admin[0].equals("admin")
-                && admin[1].equals("123");
+    public boolean checkLoginAdmin(String[] admin) {
+        return admin[0].equals("ADMIN")
+                && admin[1].equals("666666");
     }
 
     public boolean loginUser(List<User> userList, String[] account){
