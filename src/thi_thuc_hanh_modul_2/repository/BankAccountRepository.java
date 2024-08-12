@@ -7,10 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class BankAccountRepository {
-    private String filePath;
+    private String filePath= "D:\\modul2\\untitled\\src\\thi_thuc_hanh_modul_2\\data\\accounts.csv";
+    private String filePath1= "D:\\modul2\\untitled\\src\\thi_thuc_hanh_modul_2\\data\\bank_accounts.csv";
 
     public BankAccountRepository(String filePath) {
-        this.filePath = filePath;
+        this.filePath = this.filePath;
     }
 
     public List<BankAccount> getAllAccounts() {
