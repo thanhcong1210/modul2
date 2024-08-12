@@ -47,14 +47,12 @@ public class BankAccountRepository {
     public void deleteAccount(String accountId) {
         List<BankAccount> accounts = getAllAccounts();
         BankAccount accountToDelete = null;
-
         for (BankAccount account : accounts) {
             if (account.getAccountId().equals(accountId)) {
                 accountToDelete = account;
                 break;
             }
         }
-
         if (accountToDelete != null) {
             accounts.remove(accountToDelete);
             saveAllAccounts(accounts);
