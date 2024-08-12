@@ -282,17 +282,13 @@ public class LibraryView {
     }
 
     public void bookLoan(HashMap<BookLoan, Integer> bookLoan) {
-        System.out.println(">>     SÁCH ĐANG MƯỢN     <<");
-        System.out.println("Tài khoản");
-        System.out.println("Tên sách");
-        System.out.println("Tác giả");
         for (BookLoan key : bookLoan.keySet()) {
             Integer value = bookLoan.get(key);
-            System.out.println(key.getUserNameBorrowed());
-            System.out.println(key.getNameBookBorrowed());
-            System.out.println(key.getAuthorBookBorrowed());
-            System.out.println(value);
+            System.out.println(">>     SÁCH ĐANG MƯỢN     <<");
+            System.out.println("Tài khoản" + " : " + key.getUserNameBorrowed());
+            System.out.println("Tên sách" + " : " + key.getNameBookBorrowed());
+            System.out.println("Tác giả" + " : " + key.getAuthorBookBorrowed());
+            System.out.println("Số lượng" + " : " + value);
         }
-
     }
 }

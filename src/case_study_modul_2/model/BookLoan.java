@@ -1,10 +1,8 @@
 package case_study_modul_2.model;
 
-import java.io.Serializable;
 import java.util.Objects;
 
-public class BookLoan implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class BookLoan {
 
     private String userNameBorrowed;
     private String nameBookBorrowed;
@@ -57,4 +55,6 @@ public class BookLoan implements Serializable {
     public int hashCode() {
         return Objects.hash(userNameBorrowed, nameBookBorrowed, authorBookBorrowed);
     }
+
+
 }

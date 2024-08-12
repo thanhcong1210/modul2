@@ -4,6 +4,7 @@ import case_study_modul_2.model.BookLoan;
 
 import java.io.*;
 import java.util.HashMap;
+import java.util.Map;
 
 public class BookLoanRepository {
     private static BookLoanRepository bookLoanRepository;
